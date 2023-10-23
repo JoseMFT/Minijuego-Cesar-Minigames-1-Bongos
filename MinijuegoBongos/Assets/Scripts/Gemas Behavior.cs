@@ -2,24 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// -643 a -758
+// -1570 a -1710
 public class GemasBehavior : MonoBehaviour
 {
     Slider sliderPuntos;
     public GameObject white;
     CanvasGroup canvas;
     public KeyCode buttonCode;
-    bool animating = false, tookPoints = false;
-    float speed = 40f;
-    void Start()
+    bool animating = false;
+    public bool tookPoints = false, canScore = true;
+    float speed = 70f;
+
+
+    private void Awake()
     {
-        
-        sliderPuntos = FindObjectOfType<Slider>();
-        canvas = gameObject.GetComponent<CanvasGroup>();
-        LeanTween.alphaCanvas(canvas, 0f, 0f).setOnComplete(() =>
-       {
-           LeanTween.alphaCanvas(canvas, 1f, 1f).setEaseOutQuad();
-       });
+    }
+    void Start()
+    {      
     }
 
     // Update is called once per frame
@@ -28,47 +27,61 @@ public class GemasBehavior : MonoBehaviour
         transform.eulerAngles = transform.eulerAngles + new Vector3(0f, 0f, 1f) * speed * Time.deltaTime;
         transform.position = transform.position - new Vector3(speed * 5f, 0f, 0f) * Time.deltaTime;
 
-        if (transform.localPosition.x <= -643 && transform.localPosition.x >= -758)
+        if (transform.localPosition.x <= -1570 && transform.localPosition.x >= -1710)
         {
-            if (Input.GetKeyDown(buttonCode))
+            if (Input.GetKeyDown(buttonCode) && canScore ==  true)
             {
                 Debug.Log("Good!");
+                canScore = false;
                 if (sliderPuntos.value < 1f)
                 {
                     sliderPuntos.value += .1f;
                     white.SetActive(true);
-                    Destroy(gameObject, .25f);
+                    Animate();
                 }
             }
 
-            if (animating == false && white.activeSelf == false)
-            {
-                animating = true;
-                LeanTween.scale(gameObject, transform.localScale * 1.5f, 4f).setEaseOutQuad();
-                LeanTween.alphaCanvas(canvas, 0f, 1f).setEaseOutQuad().setOnComplete(() =>
-                {
-                    Destroy(gameObject);
-                }).setDelay(.35f);
-            }
+            Animate();
         }
-        else if (transform.localPosition.x < -758 && tookPoints == false)
+        else if (transform.localPosition.x < -1710 && tookPoints == false)
         {
             sliderPuntos.value -= .05f;
             tookPoints = true;
+            Animate();
         }
 
-        if (sliderPuntos.value >= 1f && white.activeSelf == false) Destroy(gameObject);
+        if (sliderPuntos.value >= 1f && white.activeSelf == false) Animate();
     }
 
-    void OnTriggerEnter(Collider collision)
+    public void Animate ()
     {
-        Debug.Log("me choco con " + collision.name);
-        LeanTween.alphaCanvas(canvas, 0f, 1f).setEaseOutQuad().setDelay(.5f);
+        canScore = false;
+        if (animating == false && white.activeSelf == false)
+        {
+            animating = true;
+            LeanTween.scale(gameObject, Vector3.one * 1.5f, 4f).setEaseOutQuad();
+            LeanTween.alphaCanvas(canvas, 0f, 1f).setEaseOutQuad().setOnComplete(() =>
+            {
+                LeanTween.scale(gameObject, Vector3.one * .9f, 0f);
+                gameObject.SetActive(false);
+            }).setDelay(.35f);
+        }
     }
 
-    void OnTriggerExit(Collider collision)
+    public void Reset()
     {
-        Destroy(gameObject);
-        
+        transform.localPosition = Vector3.zero;
+        LeanTween.scale(gameObject, Vector3.one * .9f, 0f);       
+        transform.eulerAngles = Vector3.zero;
+        white.SetActive(false);
+        tookPoints = false;
+        animating = false;
+        canScore = true;
+        sliderPuntos = FindObjectOfType<Slider>();
+        canvas = gameObject.GetComponent<CanvasGroup>();
+        LeanTween.alphaCanvas(canvas, 0f, 0f).setOnComplete(() =>
+        {
+            LeanTween.alphaCanvas(canvas, 1f, 1f).setEaseOutQuad();
+        });
     }
 }

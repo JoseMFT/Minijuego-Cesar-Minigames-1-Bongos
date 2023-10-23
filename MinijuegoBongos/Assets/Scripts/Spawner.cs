@@ -5,34 +5,41 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject gema;
     public Slider puntos;
-    GameObject creado;
+    public string gemasTag;
+    public GameObject[] pool;
     float timer;
+    bool creado = false;
 
     void Awake ()
     {
-        timer = Random.Range(.5f, 1.5f);
+        timer = Random.Range(.5f, 1.5f);        
     }
     void Start()
     {
-        
+        pool = GameObject.FindGameObjectsWithTag(gemasTag);
+        foreach(GameObject desactivar in pool)
+        {
+            desactivar.SetActive(false);
+        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (puntos.value < 1f)
-        {
-            if (timer >= 0)
-            {
+    void Update() {
+        if (puntos.value < 1f) {
+            if (timer >= 0) {
                 timer -= Time.deltaTime;
-            }
-            else
-            {
-                creado = Instantiate(gema, gameObject.transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 359.99f)));
-                creado.transform.SetParent(gameObject.transform);
+            } else {
+                foreach (GameObject gema in pool) {
+                    if (creado == false && gema.activeSelf == false) {
+                        gema.SetActive(true);
+                        gema.GetComponent<GemasBehavior>().Reset();
+                        creado = true;
+                    }
+                }
+
                 ResetTimer();
+                creado = false;
             }
         }
     }
