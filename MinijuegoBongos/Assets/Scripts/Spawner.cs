@@ -34,23 +34,20 @@ public class Spawner : MonoBehaviour
             if (tempo >= 0) {
                 tempo -= Time.deltaTime;
             } else {
-                GameObject[] x, y;
-                int row = (Mathf.FloorToInt(Random.Range(1.01f, 2.99f)));
-                if (row == 1)
+                int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.01f)));
+                if (row == 1 || row == 2)
                 {
-                    x = poolUp;
+                    Creator(poolUp);
                 }
-                else
+                else if (row == 3 || row == 4)
                 {
-                    x = poolDown;
-                }
-                foreach (GameObject gema in x) {
-                    if (creado == false && gema.activeSelf == false) {
-                        Debug.Log("Acabo de crear una gema de color " + gema.tag);
-                        gema.SetActive(true);
-                        gema.GetComponent<GemasBehavior>().Reset();
-                        creado = true;
-                    }
+                    Creator(poolDown);
+
+                } else if (row == 5)
+                {
+                    Creator(poolUp);
+                    creado = false;
+                    Creator(poolDown);
                 }
 
                 ResetTimer();
@@ -62,5 +59,19 @@ public class Spawner : MonoBehaviour
     public void ResetTimer ()
     {
         tempo = defaultTempo;
+    }
+
+    public void Creator (GameObject[] myObj)
+    {
+        foreach (GameObject gema in myObj)
+        {
+            if (creado == false && gema.activeSelf == false)
+            {
+                Debug.Log("Acabo de crear una gema de color " + gema.tag);
+                gema.SetActive(true);
+                gema.GetComponent<GemasBehavior>().Reset();
+                creado = true;
+            }
+        }
     }
 }
