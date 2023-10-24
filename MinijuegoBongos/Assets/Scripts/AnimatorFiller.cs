@@ -7,7 +7,7 @@ public class AnimatorFiller : MonoBehaviour
 {
     public GameObject particleChangeVal;
     Slider selfSlider;
-    GameObject estrellaFinal;
+    public GameObject estrellaFinal;
 
     private void Awake()
     {

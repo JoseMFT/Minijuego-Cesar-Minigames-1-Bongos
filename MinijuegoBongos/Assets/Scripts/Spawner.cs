@@ -6,19 +6,23 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     public Slider puntos;
-    public string gemasTag;
-    public GameObject[] pool;
-    float timer;
+    public float tempo = .75f, defaultTempo = .75f;
+    public string gemasTagUp, gemasTagDown;
+    public GameObject[] poolUp, poolDown;
     bool creado = false;
 
     void Awake ()
-    {
-        timer = Random.Range(.5f, 1.5f);        
+    {       
     }
     void Start()
     {
-        pool = GameObject.FindGameObjectsWithTag(gemasTag);
-        foreach(GameObject desactivar in pool)
+        poolUp = GameObject.FindGameObjectsWithTag(gemasTagUp);
+        poolDown = GameObject.FindGameObjectsWithTag(gemasTagDown);
+        foreach (GameObject desactivar in poolUp)
+        {
+            desactivar.SetActive(false);
+        }
+        foreach (GameObject desactivar in poolDown)
         {
             desactivar.SetActive(false);
         }
@@ -27,11 +31,22 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if (puntos.value < 1f) {
-            if (timer >= 0) {
-                timer -= Time.deltaTime;
+            if (tempo >= 0) {
+                tempo -= Time.deltaTime;
             } else {
-                foreach (GameObject gema in pool) {
+                GameObject[] x, y;
+                int row = (Mathf.FloorToInt(Random.Range(1.01f, 2.99f)));
+                if (row == 1)
+                {
+                    x = poolUp;
+                }
+                else
+                {
+                    x = poolDown;
+                }
+                foreach (GameObject gema in x) {
                     if (creado == false && gema.activeSelf == false) {
+                        Debug.Log("Acabo de crear una gema de color " + gema.tag);
                         gema.SetActive(true);
                         gema.GetComponent<GemasBehavior>().Reset();
                         creado = true;
@@ -46,6 +61,6 @@ public class Spawner : MonoBehaviour
 
     public void ResetTimer ()
     {
-        timer = Random.Range(0.5f, 5f);
+        tempo = defaultTempo;
     }
 }
