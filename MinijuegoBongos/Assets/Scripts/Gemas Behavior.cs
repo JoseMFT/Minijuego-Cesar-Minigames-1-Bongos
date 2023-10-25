@@ -30,6 +30,8 @@ public class GemasBehavior : MonoBehaviour
         transform.eulerAngles = transform.eulerAngles + new Vector3(0f, 0f, 1f) * speed * Time.deltaTime;
         transform.position = transform.position - new Vector3(speed * 5f, 0f, 0f) * Time.deltaTime;
 
+        //if (transform.localPosition.x < -1560 && transform.localPosition.x > -1720) Debug.Log("ahora si papa");
+        //else if (transform.localPosition.x <= -1720 || transform.localPosition.x >= -1560) Debug.Log("quieto ahi perro");
         /*if (transform.localPosition.x <= -1570 && transform.localPosition.x > -1720)
         {
             if (Input.GetKeyDown(buttonCode) && canScore ==  true)
