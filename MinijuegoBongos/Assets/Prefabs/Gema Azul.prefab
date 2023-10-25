@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7792555536266754369}
   - component: {fileID: 2330573590257377542}
   - component: {fileID: 8371794059880114208}
-  m_Layer: 5
+  - component: {fileID: -767743373294459467}
+  m_Layer: 6
   m_Name: Gema Azul
   m_TagString: Azul
   m_Icon: {fileID: 0}
@@ -92,6 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   white: {fileID: 3228583709439554588}
   buttonCode: 324
+  tookPoints: 0
+  canScore: 1
 --- !u!225 &8371794059880114208
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -104,6 +107,41 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!58 &-767743373294459467
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261940055614206554}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &3228583709439554588
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +155,7 @@ GameObject:
   - component: {fileID: 2408538581852262299}
   - component: {fileID: 3592148037418087946}
   - component: {fileID: 7003062474364695456}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

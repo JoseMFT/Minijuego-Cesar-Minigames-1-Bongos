@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 // -1570 a -1720
 public class GemasBehavior : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class GemasBehavior : MonoBehaviour
         transform.eulerAngles = transform.eulerAngles + new Vector3(0f, 0f, 1f) * speed * Time.deltaTime;
         transform.position = transform.position - new Vector3(speed * 5f, 0f, 0f) * Time.deltaTime;
 
-        if (transform.localPosition.x <= -1570 && transform.localPosition.x > -1720)
+        /*if (transform.localPosition.x <= -1570 && transform.localPosition.x > -1720)
         {
             if (Input.GetKeyDown(buttonCode) && canScore ==  true)
             {
@@ -53,6 +54,36 @@ public class GemasBehavior : MonoBehaviour
         }
 
         if (sliderPuntos.value >= 1f && white.activeSelf == false) Animate();
+        */
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("arepa");
+        canScore = true;
+        if (Input.GetKey(buttonCode) && canScore == true && collision.tag == "Goal")
+        {
+            Debug.Log("a");
+            canScore = false;
+
+            if (sliderPuntos.value < 1f)
+            {
+                tookPoints = true;
+                sliderPuntos.value += .1f;
+                white.SetActive(true);
+                Animate();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Goal")
+        {            
+            sliderPuntos.value -= .05f;
+            tookPoints = true;
+            Animate();
+        }
     }
 
     public void Animate ()

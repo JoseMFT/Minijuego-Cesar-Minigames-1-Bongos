@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2737078524992804919}
   - component: {fileID: 6169074863572587910}
   - component: {fileID: 8738042326173349452}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,8 @@ GameObject:
   - component: {fileID: 4373252288277823542}
   - component: {fileID: -2136165051143837993}
   - component: {fileID: 2016079971542061382}
-  m_Layer: 5
+  - component: {fileID: -3349464941054069940}
+  m_Layer: 6
   m_Name: Gema Violeta
   m_TagString: Violeta
   m_Icon: {fileID: 0}
@@ -242,6 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   white: {fileID: 2187466299784859931}
   buttonCode: 323
+  tookPoints: 0
+  canScore: 1
 --- !u!225 &2016079971542061382
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -254,3 +257,38 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!58 &-3349464941054069940
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5996198927077772077}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
