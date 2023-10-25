@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Security.Cryptography;
+using System.Diagnostics;
 // -1570 a -1720
 public class GemasBehavior : MonoBehaviour
 {
-    Slider sliderPuntos;
+    public Slider sliderPuntos;
     Vector3 objScale;
     public GameObject white;
     CanvasGroup canvas;
@@ -18,10 +20,11 @@ public class GemasBehavior : MonoBehaviour
 
     private void Awake()
     {
+        
         objScale = transform.localScale;
     }
     void Start()
-    {      
+    {
     }
 
     // Update is called once per frame
@@ -29,61 +32,25 @@ public class GemasBehavior : MonoBehaviour
     {
         transform.eulerAngles = transform.eulerAngles + new Vector3(0f, 0f, 1f) * speed * Time.deltaTime;
         transform.position = transform.position - new Vector3(speed * 5f, 0f, 0f) * Time.deltaTime;
+        if (transform.localPosition.x < -1710 && animating == false) {
+            Animate ();
+        }
 
-        //if (transform.localPosition.x < -1560 && transform.localPosition.x > -1720) Debug.Log("ahora si papa");
-        //else if (transform.localPosition.x <= -1720 || transform.localPosition.x >= -1560) Debug.Log("quieto ahi perro");
-        /*if (transform.localPosition.x <= -1570 && transform.localPosition.x > -1720)
-        {
-            if (Input.GetKeyDown(buttonCode) && canScore ==  true)
-            {
-                Debug.Log("Good!");
-                canScore = false;
-                if (sliderPuntos.value < 1f)
-                {
+        if (canScore == true) {
+            if (Input.GetKey (buttonCode) && CanScoreChecker() == canScore) {
+                UnityEngine.Debug.Log ("a");
+                if (Input.GetKey (buttonCode) && sliderPuntos.value < 1f) {
+                    tookPoints = true;
                     sliderPuntos.value += .1f;
-                    white.SetActive(true);
-                    Animate();
+                    if (white.activeSelf == false) {
+                        white.SetActive (true);
+                    }
+                        Animate ();
                 }
             }
-
-            Animate();
-        }
-        else if (transform.localPosition.x <= -1720 && tookPoints == false)
-        {
-            sliderPuntos.value -= .05f;
-            tookPoints = true;
-            Animate();
         }
 
-        if (sliderPuntos.value >= 1f && white.activeSelf == false) Animate();
-        */
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("arepa");
-        canScore = true;
-        if (Input.GetKey(buttonCode) && canScore == true && collision.tag == "Goal")
-        {
-            Debug.Log("a");
-            canScore = false;
-
-            if (sliderPuntos.value < 1f)
-            {
-                tookPoints = true;
-                sliderPuntos.value += .1f;
-                white.SetActive(true);
-                Animate();
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Goal")
-        {            
-            sliderPuntos.value -= .05f;
-            tookPoints = true;
+        if (animating == false && sliderPuntos.value >= 1f) {
             Animate();
         }
     }
@@ -91,7 +58,7 @@ public class GemasBehavior : MonoBehaviour
     public void Animate ()
     {
         canScore = false;
-        if (animating == false && white.activeSelf == false)
+        if (animating == false)
         {
             animating = true;
             LeanTween.scale(gameObject, Vector3.one * 1.5f, 2f).setEaseOutQuad();
@@ -99,6 +66,7 @@ public class GemasBehavior : MonoBehaviour
             {
                 LeanTween.scale(gameObject, transform.localScale * .75f, 0f);
                 gameObject.SetActive(false);
+
             }).setDelay(.35f);
         }
     }
@@ -113,11 +81,18 @@ public class GemasBehavior : MonoBehaviour
         tookPoints = false;
         animating = false;
         canScore = true;
-        sliderPuntos = FindObjectOfType<Slider>();
         canvas = gameObject.GetComponent<CanvasGroup>();
         LeanTween.alphaCanvas(canvas, 0f, 0f).setOnComplete(() =>
         {
             LeanTween.alphaCanvas(canvas, 1f, 1f).setEaseOutQuad();
         });
+    }
+
+    public bool CanScoreChecker () {
+        if (transform.localPosition.x <= -1570f && transform.localPosition.x > -1710f) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

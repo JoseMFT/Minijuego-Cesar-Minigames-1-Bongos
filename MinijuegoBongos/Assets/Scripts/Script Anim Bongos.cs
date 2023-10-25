@@ -17,9 +17,11 @@ public class ScriptAnimBongos : MonoBehaviour
         if (Input.GetKey(BongoL))
         {
             anim.Play("Tocar Bongos L");
+
         } else if (Input.GetKey(BongoR))
         {
             anim.Play("Tocar Bongos R");
+
         } else if (Input.GetKey(BongoL) && Input.GetKey(BongoR))
         {
             anim.Play("Tocar Ambos Bongos");

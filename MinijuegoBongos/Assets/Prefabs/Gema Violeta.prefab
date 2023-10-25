@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9741efd95004fa84da3b9fee54727ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderPuntos: {fileID: 0}
   white: {fileID: 2187466299784859931}
   buttonCode: 323
   tookPoints: 0

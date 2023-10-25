@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
             if (tempo >= 0) {
                 tempo -= Time.deltaTime;
             } else {
-                int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.01f)));
+                int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.99f)));
                 if (row == 1 || row == 2)
                 {
                     Creator(poolUp);
@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
                 {
                     Creator(poolDown);
 
-                } else if (row == 5)
+                } else if (row >= 5)
                 {
                     Creator(poolUp);
                     creado = false;

@@ -7,13 +7,14 @@ public class AnimatorFiller : MonoBehaviour
 {
     public GameObject particleChangeVal;
     Slider selfSlider;
-    public GameObject estrellaFinal;
+    public GameObject finalStar;
+    bool activeStar = false;
 
     private void Awake()
     {
         selfSlider = gameObject.GetComponent<Slider>();
-        estrellaFinal = GameObject.Find("Estrella llena");
-        estrellaFinal.SetActive(false);
+        finalStar = GameObject.Find("Estrella llena");
+        finalStar.SetActive(false);
     }
     void Start()
     {
@@ -23,12 +24,18 @@ public class AnimatorFiller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (selfSlider.value >= 1f && estrellaFinal.activeSelf == false) estrellaFinal.SetActive(true);   
+        if (selfSlider.value >= 1f && finalStar.activeSelf == false) {
+            finalStar.SetActive (true);
+        }
+
+        if (finalStar.activeSelf == true && activeStar == false) {
+            activeStar = true;
+        }
     }
 
     public void animationLT()
     {
-        GameObject.Instantiate(particleChangeVal, estrellaFinal.transform.position, Quaternion.identity);
+        GameObject.Instantiate(particleChangeVal, finalStar.transform.position, Quaternion.identity);
         LeanTween.scale(gameObject, Vector3.one, .5f).setEaseInOutElastic();
     }
 }
