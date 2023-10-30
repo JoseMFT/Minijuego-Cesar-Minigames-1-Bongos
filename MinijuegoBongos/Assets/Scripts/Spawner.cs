@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
+    public int spawnID = 0;
     public Slider puntos;
     public float tempo = .75f, defaultTempo = .75f;
     public string gemasTagUp, gemasTagDown;
@@ -37,17 +38,20 @@ public class Spawner : MonoBehaviour
                 int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.99f)));
                 if (row == 1 || row == 2)
                 {
-                    Creator(poolUp);
+                    spawnID++;
+                    Creator(poolUp, spawnID);
                 }
                 else if (row == 3 || row == 4)
                 {
-                    Creator(poolDown);
+                    spawnID++;
+                    Creator(poolDown, spawnID);
 
                 } else if (row >= 5)
                 {
-                    Creator(poolUp);
+                    spawnID++;
+                    Creator(poolUp, spawnID);
                     creado = false;
-                    Creator(poolDown);
+                    Creator(poolDown, spawnID);
                 }
 
                 ResetTimer();
@@ -61,15 +65,15 @@ public class Spawner : MonoBehaviour
         tempo = defaultTempo;
     }
 
-    public void Creator (GameObject[] myObj)
+    public void Creator (GameObject[] myObj, int identificacion)
     {
         foreach (GameObject gema in myObj)
         {
             if (creado == false && gema.activeSelf == false)
             {
-                Debug.Log("Acabo de crear una gema de color " + gema.tag);
                 gema.SetActive(true);
                 gema.GetComponent<GemasBehavior>().Reset();
+                gema.GetComponent<GemasBehavior> ().gemaID = identificacion;
                 creado = true;
             }
         }
