@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.15854973, g: 0.17051059, b: 0.17597294, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,9 +391,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -508,9 +516,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -717,9 +733,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1342,9 +1366,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1476,9 +1508,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2493,9 +2533,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2788,9 +2836,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2966,9 +3022,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 780436201}
-    - targetCorrespondingSourceObject: {fileID: 7036213049465896255, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 2333757543288720835, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1269197454}
+      addedObject: {fileID: 1385584199}
+    - targetCorrespondingSourceObject: {fileID: 8847057062377705052, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1375418679}
   m_SourcePrefab: {fileID: 100100000, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
 --- !u!114 &780436199
 MonoBehaviour:
@@ -3188,9 +3247,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6668,9 +6735,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6794,9 +6869,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6943,29 +7026,6 @@ Transform:
   - {fileID: 819270434}
   m_Father: {fileID: 1809974472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1269197450 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
-  m_PrefabInstance: {fileID: 780436193}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &1269197454
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269197450}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 7c8a5c3675959524987badd80812966c, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 107d5336f0cac224db0a0b58a0330217, type: 2}
-  - {fileID: 7400000, guid: 7c8a5c3675959524987badd80812966c, type: 2}
-  - {fileID: 7400000, guid: 9e3a0b345f96c8c45bfc636c4f08d2d5, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!224 &1284730469 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
@@ -7106,9 +7166,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7294,6 +7362,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365010750}
   m_CullTransparentMesh: 1
+--- !u!1 &1375418677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8847057062377705052, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
+  m_PrefabInstance: {fileID: 780436193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1375418679
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375418677}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9e3a0b345f96c8c45bfc636c4f08d2d5, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!1 &1385584197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2333757543288720835, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
+  m_PrefabInstance: {fileID: 780436193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1385584199
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385584197}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 107d5336f0cac224db0a0b58a0330217, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1438975347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7311,9 +7419,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7517,9 +7633,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7651,9 +7775,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7815,9 +7947,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8044,9 +8184,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8518,9 +8666,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8652,9 +8808,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8791,6 +8955,23 @@ Transform:
   - {fileID: 884140949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1826861948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3955937049256282087, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
+  m_PrefabInstance: {fileID: 5439134988977627250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1826861952
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826861948}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1843797308
 GameObject:
   m_ObjectHideFlags: 0
@@ -9447,6 +9628,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4293703894897385125, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5439134988977627253}
+    - targetCorrespondingSourceObject: {fileID: 3955937049256282087, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1826861952}
   m_SourcePrefab: {fileID: 100100000, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
 --- !u!224 &5439134988977627251 stripped
 RectTransform:
@@ -9466,7 +9650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleChangeVal: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
-  finalStar: {fileID: 0}
+  estrellaFinal: {fileID: 0}
 --- !u!114 &5439134988977627257 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4452948138275379543, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
@@ -9487,9 +9671,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: tagOpuesto
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9521,18 +9713,6 @@ PrefabInstance:
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9581,10 +9761,6 @@ PrefabInstance:
     - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3934796150675921881, guid: bf546cb52ecee7244876279094f28c64, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5996198927077772077, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: m_Name
@@ -9612,14 +9788,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gema Azul
       objectReference: {fileID: 0}
-    - target: {fileID: 261940055614206554, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: tagOpuesto
+      value: Violeta
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
       value: 
       objectReference: {fileID: 5439134988977627257}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: puntosGameObject
+      value: 
+      objectReference: {fileID: 957363899}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9651,18 +9831,6 @@ PrefabInstance:
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9711,10 +9879,6 @@ PrefabInstance:
     - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7354213747881468590, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
