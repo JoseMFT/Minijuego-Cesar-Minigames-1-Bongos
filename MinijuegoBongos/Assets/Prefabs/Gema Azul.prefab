@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7792555536266754369}
   - component: {fileID: 2330573590257377542}
   - component: {fileID: 8371794059880114208}
-  - component: {fileID: -767743373294459467}
   m_Layer: 6
   m_Name: Gema Azul
   m_TagString: Azul
@@ -91,11 +90,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9741efd95004fa84da3b9fee54727ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderPuntos: {fileID: 0}
+  puntosGameObject: {fileID: 0}
   imagenBlanca: {fileID: 3228583709439554588}
   buttonCode: 324
-  tookPoints: 0
-  canScore: 1
+  quitoPuntos: 0
+  puedeMarcar: 1
+  gemaParalela: 0
 --- !u!225 &8371794059880114208
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -108,41 +108,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!58 &-767743373294459467
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261940055614206554}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 50
 --- !u!1 &3228583709439554588
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

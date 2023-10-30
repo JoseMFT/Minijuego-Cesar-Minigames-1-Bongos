@@ -36,8 +36,8 @@ public class AnimatorFiller : MonoBehaviour
             estActiva = true;
             LeanTween.alphaCanvas (estCanvas, 1f, .75f);
             Vector3 escalaEstVacia = estrellaVacia.transform.localScale;
-            LeanTween.scale (estrellaVacia, estrellaVacia.transform.localScale * .65f, .25f).setEaseOutQuad().setOnComplete (() => {
-                LeanTween.scale (estrellaVacia, escalaEstVacia, .5f).setEaseInOutElastic ();
+            LeanTween.scale (estrellaVacia, estrellaVacia.transform.localScale * .85f, .25f).setEaseOutQuad().setOnComplete (() => {
+                LeanTween.scale (estrellaVacia, escalaEstVacia, .75f).setEaseOutElastic ();
             });
         }
     }

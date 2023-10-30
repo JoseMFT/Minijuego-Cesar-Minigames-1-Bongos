@@ -38,20 +38,17 @@ public class Spawner : MonoBehaviour
                 int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.99f)));
                 if (row == 1 || row == 2)
                 {
-                    spawnID++;
-                    Creator(poolUp, spawnID);
+                    Creator(poolUp, false);
                 }
                 else if (row == 3 || row == 4)
                 {
-                    spawnID++;
-                    Creator(poolDown, spawnID);
+                    Creator(poolDown, false);
 
                 } else if (row >= 5)
                 {
-                    spawnID++;
-                    Creator(poolUp, spawnID);
+                    Creator(poolUp, true);
                     creado = false;
-                    Creator(poolDown, spawnID);
+                    Creator(poolDown, true);
                 }
 
                 ResetTimer();
@@ -65,7 +62,7 @@ public class Spawner : MonoBehaviour
         tempo = defaultTempo;
     }
 
-    public void Creator (GameObject[] myObj, int identificacion)
+    public void Creator (GameObject[] myObj, bool tieneParalela)
     {
         foreach (GameObject gema in myObj)
         {
@@ -73,7 +70,7 @@ public class Spawner : MonoBehaviour
             {
                 gema.SetActive(true);
                 gema.GetComponent<GemasBehavior>().Reset();
-                gema.GetComponent<GemasBehavior> ().gemaID = identificacion;
+                gema.GetComponent<GemasBehavior> ().gemaParalela = tieneParalela;
                 creado = true;
             }
         }

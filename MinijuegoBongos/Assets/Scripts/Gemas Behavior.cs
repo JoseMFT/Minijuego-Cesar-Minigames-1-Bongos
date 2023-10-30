@@ -8,30 +8,19 @@ using System.Diagnostics;
 // -1570 a -1720
 public class GemasBehavior : MonoBehaviour
 {
-    public GameObject [] listaGemas;
-    public GameObject gemaParalela = null;
     public GameObject puntosGameObject, imagenBlanca;
-    public string tagOpuesto;
-    public int gemaID = 0;
     Slider sliderPuntos;
-    Vector3 escalaObj;
     CanvasGroup canvas;
     public KeyCode buttonCode;
     bool animando = false, pulsando = false;
-    Color colorImagen;
-    public bool quitoPuntos = false, puedeMarcar = true;
-    float velocidad = 70f, alphaImageVal = 0f;
+    public bool quitoPuntos = false, puedeMarcar = true, gemaParalela = false;
+    float velocidad = 70f;
 
 
     private void Awake()
     {
-        listaGemas = GameObject.FindGameObjectsWithTag (tagOpuesto);
         imagenBlanca.SetActive (false);
-        colorImagen = imagenBlanca.GetComponent<Image> ().color;
-        colorImagen = Color.white;
-        colorImagen.a = 0;
         sliderPuntos = puntosGameObject.GetComponent<Slider> ();
-        escalaObj = transform.localScale;
     }
     void Start()
     {
@@ -40,29 +29,15 @@ public class GemasBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = transform.eulerAngles + new Vector3(0f, 0f, 1f) * velocidad * Time.deltaTime;
-        transform.position = transform.position - new Vector3(velocidad * 5f, 0f, 0f) * Time.deltaTime;
+        transform.eulerAngles = transform.eulerAngles + new Vector3 (0f, 0f, 1f) * velocidad * Time.deltaTime;
+        transform.position = transform.position - new Vector3 (velocidad * 5f, 0f, 0f) * Time.deltaTime;
 
         if (transform.localPosition.x < -1710 && animando == false) {
             Animate ();
         }
 
-        if (Input.GetKey (buttonCode)) {
-            pulsando = true;
-        } else {
-            pulsando = false;
-        }
-
-        if (puedeMarcar == true) {
-
-            foreach (GameObject gemaOpuesta in listaGemas) {                
-                if (gemaOpuesta.GetComponent<GemasBehavior> ().gemaID == gameObject.GetComponent<GemasBehavior> ().gemaID && gemaParalela == null && gemaID >= 1) {
-                    UnityEngine.Debug.Log (gemaOpuesta.name);
-                    gemaParalela = gemaOpuesta.GetComponent<GameObject> ();
-                }
-            }
-
-            if (gemaParalela != null && gemaParalela.GetComponent<GemasBehavior> ().pulsando == true) {
+        if (puedeMarcar == true && puedeMarcar == CheckerPuedeMarcar()) {
+            if (gemaParalela == true) {
                 MarcarPuntos (.05f);
             } else {
                 MarcarPuntos (.1f);
@@ -72,12 +47,13 @@ public class GemasBehavior : MonoBehaviour
         if (animando == false && sliderPuntos.value >= 1f) {
             Animate();
         }
+
     }
 
     
     public void MarcarPuntos(float puntosAMarcar) {
 
-        if (pulsando == true && CanScoreChecker () == puedeMarcar && sliderPuntos.value < 1f) {
+        if (Input.GetKeyDown (buttonCode) && CheckerPuedeMarcar () == puedeMarcar && sliderPuntos.value < 1f) {
             UnityEngine.Debug.Log ("a");
             quitoPuntos = true;
             sliderPuntos.value += puntosAMarcar;
@@ -107,9 +83,6 @@ public class GemasBehavior : MonoBehaviour
 
     public void Reset()
     {
-        colorImagen.a = 0;
-        gemaParalela = null;
-
         LeanTween.cancel(gameObject);
         LeanTween.scale(gameObject, Vector3.one, 0f);
         transform.localPosition = Vector3.zero;
@@ -126,7 +99,7 @@ public class GemasBehavior : MonoBehaviour
         });
     }
 
-    public bool CanScoreChecker () {
+    public bool CheckerPuedeMarcar () {
 
         if (transform.localPosition.x <= -1570f && transform.localPosition.x > -1710f) {
             return true;

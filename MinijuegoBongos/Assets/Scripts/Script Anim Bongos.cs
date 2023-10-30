@@ -14,13 +14,14 @@ public class ScriptAnimBongos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(BongoL))
+        if (Input.GetKeyDown(BongoL))
         {
-            anim.Play("Tocar Bongos L");
+            anim.SetTrigger("BongoL");
 
-        } else if (Input.GetKey(BongoR))
+
+        } else if (Input.GetKeyDown(BongoR))
         {
-            anim.Play("Tocar Bongos R");
+            anim.SetTrigger("BongoR");
         }
     }
 }
