@@ -14,7 +14,7 @@ public class GemasBehavior : MonoBehaviour
     public KeyCode buttonCode;
     bool animando = false;
     public bool cambioPuntos = false, puedeMarcar = true, gemaParalela = false;
-    float velocidad = 70f, sentidoY = 0f;
+    float velocidad = 100f, sentidoY = 0f;
 
 
     private void Awake()

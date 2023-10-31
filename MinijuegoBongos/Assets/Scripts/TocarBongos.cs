@@ -22,6 +22,12 @@ public class TocarBongos : StateMachineBehaviour
     //    
     //}
 
+    /****************************************************************************************************
+    public override void OnStateExit (Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        animator.SetBool ("Bongos", false);
+    }
+    ****************************************************************************************************/
+
     // OnStateMove is called before OnStateMove is called on any state inside this state machine
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
