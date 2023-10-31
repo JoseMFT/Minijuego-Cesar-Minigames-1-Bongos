@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5788854012908810069}
   - component: {fileID: 2737078524992804919}
   - component: {fileID: 6169074863572587910}
+  - component: {fileID: 3426515296859458923}
   m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -128,6 +129,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3426515296859458923
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2187466299784859931}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5996198927077772077
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,8 +233,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puntosGameObject: {fileID: 0}
   imagenBlanca: {fileID: 2187466299784859931}
+  FXluz: {fileID: 0}
+  FXestrellas: {fileID: 0}
   buttonCode: 323
-  quitoPuntos: 0
+  cambioPuntos: 0
   puedeMarcar: 1
   gemaParalela: 0
 --- !u!225 &2016079971542061382

@@ -54,6 +54,8 @@ public class Spawner : MonoBehaviour
                 ResetTimer();
                 creado = false;
             }
+        } else {
+            gameObject.GetComponent<Spawner> ().enabled = false;
         }
     }
 

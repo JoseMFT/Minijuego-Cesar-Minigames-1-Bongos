@@ -262,8 +262,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 963194227}
+  m_PlaneDistance: 0.4
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -3026,12 +3026,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 780436201}
+    - targetCorrespondingSourceObject: {fileID: 909831341444427759, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1962061143}
     - targetCorrespondingSourceObject: {fileID: 2333757543288720835, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1385584199}
+      addedObject: {fileID: 1385584201}
     - targetCorrespondingSourceObject: {fileID: 8847057062377705052, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1375418679}
+      addedObject: {fileID: 1375418681}
   m_SourcePrefab: {fileID: 100100000, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
 --- !u!114 &780436199
 MonoBehaviour:
@@ -4177,7 +4180,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.20518869, g: 0.3198375, b: 0.5, a: 0}
+  m_BackGroundColor: {r: 0.02202742, g: 0.046847783, b: 0.084905684, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7372,7 +7375,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8847057062377705052, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
   m_PrefabInstance: {fileID: 780436193}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &1375418679
+--- !u!111 &1375418681
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7382,10 +7385,9 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 9e3a0b345f96c8c45bfc636c4f08d2d5, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 9e3a0b345f96c8c45bfc636c4f08d2d5, type: 2}
+  m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &1385584197 stripped
@@ -7393,7 +7395,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2333757543288720835, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
   m_PrefabInstance: {fileID: 780436193}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &1385584199
+--- !u!111 &1385584201
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7403,10 +7405,9 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 107d5336f0cac224db0a0b58a0330217, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 107d5336f0cac224db0a0b58a0330217, type: 2}
+  m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1001 &1438975347
@@ -8438,7 +8439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.05, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.15}
+  m_AnchoredPosition: {x: 0, y: 0.1500001}
   m_SizeDelta: {x: 10, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717849558
@@ -8972,7 +8973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.05, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.24999994}
+  m_AnchoredPosition: {x: 0, y: 0.25}
   m_SizeDelta: {x: 10, y: 0.5000001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843797310
@@ -9036,6 +9037,27 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1962061141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 909831341444427759, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
+  m_PrefabInstance: {fileID: 780436193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1962061143
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962061141}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 7c8a5c3675959524987badd80812966c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7c8a5c3675959524987badd80812966c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2079038629
 GameObject:
   m_ObjectHideFlags: 0
