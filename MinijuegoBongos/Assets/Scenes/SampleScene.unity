@@ -3043,7 +3043,7 @@ MonoBehaviour:
   BongoL: 323
   BongoR: 324
   otraTecla: 0
-  tiempoEspera: 0.25
+  tiempoEspera: 0.05
 --- !u!95 &780436201
 Animator:
   serializedVersion: 5
@@ -4304,7 +4304,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 963194228}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
