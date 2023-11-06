@@ -3,7 +3,22 @@ guid: dd5d286501aa16847935ffd6d5234e31
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madera-corteza
+    second: {fileID: 2100000, guid: 277ff1381a9cec243a3c40554a7d7232, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madera-ramas1
+    second: {fileID: 2100000, guid: 794869138e88d154ab88eb843f487fab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madera-ramas2
+    second: {fileID: 2100000, guid: 0c299a91fe48c4a4caea42c3dcb7b18b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
