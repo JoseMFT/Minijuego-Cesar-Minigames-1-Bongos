@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class CameraController : MonoBehaviour
 {
-    Camera camera;// Start is called before the first frame update
+    new Camera camera;// Start is called before the first frame update
     
     void Start()
     {
