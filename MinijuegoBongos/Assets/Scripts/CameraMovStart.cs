@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CameraMovStart : MonoBehaviour
 {
-    GameObject menuCanvas;
+    GameObject menuCanvas, logotipo;
     float velocidad = 1.25f;
     CanvasGroup menuCanvasGroup;
     public Vector3 nuevaPos, cameraPos;
@@ -16,6 +16,7 @@ public class CameraMovStart : MonoBehaviour
         nuevaPos = GameObject.Find ("GameCameraPos").transform.position;
         nuevaRot = GameObject.Find ("GameCameraPos").transform.rotation;
         menuCanvas = GameObject.Find ("Canvas");
+        logotipo = GameObject.Find("Quad");
         menuCanvasGroup = menuCanvas.GetComponent<CanvasGroup> ();
     }
     private void Update () {
@@ -46,10 +47,16 @@ public class CameraMovStart : MonoBehaviour
         }
     }
 
+
+    public void AnimacionOpciones () {
+    
+    }
+
     public void AnimacionQuitarCanvas () {
         animar = true;
         menuCanvas.GetComponent<GraphicRaycaster> ().enabled = false;
         LeanTween.alphaCanvas (menuCanvasGroup, 0f, 2f);
+        logotipo.SetActive(false);
     }
 
 
