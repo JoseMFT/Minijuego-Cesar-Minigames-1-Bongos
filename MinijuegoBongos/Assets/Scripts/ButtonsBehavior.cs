@@ -7,11 +7,11 @@ using UnityEditor;
 
 public class ButtonsBehavior: MonoBehaviour
 {
-    public Slider sliderDificultad;
+    public GameObject sliderDificultadGameObject;
+    Slider sliderDificultad;
     float nuevoValorSlider = 0f;
     public GameObject [] botones;
-    bool contarTiempo = false;
-    float intervaloDeTiempo = .5f;
+
     public enum EstadosBoton
     {
         estadoPorDefecto,
@@ -25,26 +25,16 @@ public class ButtonsBehavior: MonoBehaviour
 
     void Awake ()
     {
+        sliderDificultad = sliderDificultadGameObject.GetComponent<Slider>();
         estadoActual = EstadosBoton.estadoPorDefecto;
         UnityEngine.Debug.Log(estadoActual);
         //LeanTween.value(sliderDificultad.value, 0f, 0f);
     }
 
     private void Start () {
-        AnimacionBotonesAparecer(0);
-    }
-    private void Update () {
-        UnityEngine.Debug.Log(sliderDificultad.value);
-
-        if (contarTiempo == true) {
-            if (intervaloDeTiempo >= 0f) {
-                intervaloDeTiempo -= Time.deltaTime;
-
-            } else {
-                intervaloDeTiempo = .5f;
-                contarTiempo = false;
-            }
-        }
+        AparecerBoton(botones [0], 0f);
+        AparecerBoton(botones [1], .125f);
+        AparecerBoton(botones [2], .25f);
     }
 
     public void CambiarEstados (int valor)
@@ -57,12 +47,10 @@ public class ButtonsBehavior: MonoBehaviour
 
         } else if (valor == 1)
         {
-            VolverCambiarDificultad();
             estadoActual = EstadosBoton.estadoOpciones;
 
         } else if (valor == 2)
         {
-            VolverCambiarDificultad();
             estadoActual = EstadosBoton.estadoSalir;
         }
 
@@ -73,19 +61,27 @@ public class ButtonsBehavior: MonoBehaviour
                 UnityEngine.Debug.Log("Por defecto");
                 break;
 
+
             case EstadosBoton.estadoSeleccionarDificultad:
                 UnityEngine.Debug.Log("Cambiar Dificultad");
                 AbrirCerrarDificultad();
+
                 if (nuevoValorSlider == 1) {
-                    AnimacionBotonesDesaparecer(1);
+                    DesaparecerBoton(botones [1], 0f);
+                    DesaparecerBoton(botones [2], .125f);
+
                 } else {
-                    AnimacionBotonesAparecer(1);
+                    AparecerBoton(botones [1], 0f);
+                    AparecerBoton(botones [2], .125f);
                 }
                 break;
+
+
 
             case EstadosBoton.estadoOpciones:
                 UnityEngine.Debug.Log("Opciones");
                 break;
+
 
             case EstadosBoton.estadoSalir:
 
@@ -96,17 +92,9 @@ public class ButtonsBehavior: MonoBehaviour
 
                     EditorApplication.isPlaying = false;
                 }
-
                 break;
 
         }    
-    }
-
-
-    public void VolverCambiarDificultad () {
-        if (sliderDificultad.value >= 1f) {
-            LeanTween.value(sliderDificultad.value, 0f, .75f).setEaseOutBounce();
-        }
     }
 
     public void ScaleUp (GameObject Boton) {
@@ -126,64 +114,29 @@ public class ButtonsBehavior: MonoBehaviour
     public void AbrirCerrarDificultad () {
         nuevoValorSlider = 1 - nuevoValorSlider;
 
-        while (sliderDificultad.value != nuevoValorSlider) {
-
             if (nuevoValorSlider > sliderDificultad.value) {
-                sliderDificultad.value += Time.deltaTime * 2f;
+                LeanTween.value(sliderDificultadGameObject, sliderDificultad.value, 1f, 1f).setEaseOutBounce();
 
             } else if (nuevoValorSlider < sliderDificultad.value ) {
-                sliderDificultad.value -= Time.deltaTime * 2f;
+                
+                LeanTween.value(sliderDificultadGameObject, sliderDificultad.value, 0f, 1f).setEaseOutBounce();
             }
-        }
     }
 
-    public void AparecerBoton (GameObject botonQueAparece) {
+    public void AparecerBoton (GameObject botonQueAparece, float delayAnimacion) {
+
         if (botonQueAparece.activeSelf == false) {
             botonQueAparece.SetActive(true);
         }
         LeanTween.scale(botonQueAparece, Vector3.zero, 0f).setOnComplete(() => {
-            LeanTween.scale (botonQueAparece, Vector3.one * 5.29f, .5f).setEaseOutBounce();
+            LeanTween.scale (botonQueAparece, Vector3.one * 5.29f, .75f).setEaseOutCubic().setDelay(delayAnimacion);
         });
     }
 
-    public void DesaparecerBoton (GameObject botonQueDesaparece) {
-        LeanTween.scale(botonQueDesaparece, Vector3.zero, .5f).setEaseOutBounce().setOnComplete ( ()=> {
+    public void DesaparecerBoton (GameObject botonQueDesaparece, float delayAnimacion) {
+        LeanTween.scale(botonQueDesaparece, Vector3.zero, .75f).setOnComplete(() => {
             botonQueDesaparece.SetActive(false);
-        });
+        }).setDelay(delayAnimacion);
         
-    }
-
-    public void AnimacionBotonesAparecer (int botonInicial) {
-        int cuentaBotones = botonInicial;
-        contarTiempo = true;
-
-        while (cuentaBotones <= botones.Length - 1) {
-            
-            if (intervaloDeTiempo >= 0f) {
-                UnityEngine.Debug.Log(intervaloDeTiempo);
-            } else {
-                AparecerBoton(botones [cuentaBotones]);
-                cuentaBotones++;
-                contarTiempo = true;
-            }
-        }
-        
-
-    }
-
-    public void AnimacionBotonesDesaparecer (int botonInicial) {
-        int cuentaBotones = botonInicial;
-        contarTiempo = true;
-
-        while (cuentaBotones <= botones.Length - 1) {
-
-            if (intervaloDeTiempo >= 0f) {
-                UnityEngine.Debug.Log(intervaloDeTiempo);
-            } else {
-                DesaparecerBoton(botones [cuentaBotones]);
-                cuentaBotones++;
-                contarTiempo = true;
-            }
-        }
     }
 }
