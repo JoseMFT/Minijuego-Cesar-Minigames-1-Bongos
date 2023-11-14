@@ -54,7 +54,7 @@ public class CameraMovStart : MonoBehaviour
 
     public void AnimacionQuitarCanvas () {
         animar = true;
-        menuCanvas.GetComponent<GraphicRaycaster> ().enabled = false;
+        //menuCanvas.GetComponent<GraphicRaycaster> ().enabled = false;
         LeanTween.alphaCanvas (menuCanvasGroup, 0f, 2f);
         logotipo.SetActive(false);
     }
