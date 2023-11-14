@@ -9,6 +9,9 @@ public class ButtonsBehavior: MonoBehaviour
 {
     public Slider sliderDificultad;
     float nuevoValorSlider = 0f;
+    public GameObject [] botones;
+    bool contarTiempo = false;
+    float intervaloDeTiempo = .5f;
     public enum EstadosBoton
     {
         estadoPorDefecto,
@@ -25,6 +28,23 @@ public class ButtonsBehavior: MonoBehaviour
         estadoActual = EstadosBoton.estadoPorDefecto;
         UnityEngine.Debug.Log(estadoActual);
         //LeanTween.value(sliderDificultad.value, 0f, 0f);
+    }
+
+    private void Start () {
+        AnimacionBotonesAparecer(0);
+    }
+    private void Update () {
+        UnityEngine.Debug.Log(sliderDificultad.value);
+
+        if (contarTiempo == true) {
+            if (intervaloDeTiempo >= 0f) {
+                intervaloDeTiempo -= Time.deltaTime;
+
+            } else {
+                intervaloDeTiempo = .5f;
+                contarTiempo = false;
+            }
+        }
     }
 
     public void CambiarEstados (int valor)
@@ -50,12 +70,17 @@ public class ButtonsBehavior: MonoBehaviour
         {
 
             case EstadosBoton.estadoPorDefecto:
-                AbrirCerrarDificultad();
                 UnityEngine.Debug.Log("Por defecto");
                 break;
 
             case EstadosBoton.estadoSeleccionarDificultad:
                 UnityEngine.Debug.Log("Cambiar Dificultad");
+                AbrirCerrarDificultad();
+                if (nuevoValorSlider == 1) {
+                    AnimacionBotonesDesaparecer(1);
+                } else {
+                    AnimacionBotonesAparecer(1);
+                }
                 break;
 
             case EstadosBoton.estadoOpciones:
@@ -77,9 +102,6 @@ public class ButtonsBehavior: MonoBehaviour
         }    
     }
 
-    private void Update () {
-        UnityEngine.Debug.Log(sliderDificultad.value);
-    }
 
     public void VolverCambiarDificultad () {
         if (sliderDificultad.value >= 1f) {
@@ -88,11 +110,11 @@ public class ButtonsBehavior: MonoBehaviour
     }
 
     public void ScaleUp (GameObject Boton) {
-        LeanTween.scale(Boton, Vector3.one * 1.1f * 5.29f, .15f).setEaseOutCubic();
+        LeanTween.scale(Boton, Vector3.one * 1.05f * 5.29f, .15f).setEaseOutCubic();
     }
 
     public void ScaleDown (GameObject Boton) {
-        LeanTween.scale(Boton, Vector3.one * .9f * 5.29f, .15f).setEaseOutCubic().setOnComplete( () => {
+        LeanTween.scale(Boton, Vector3.one * .95f * 5.29f, .15f).setEaseOutCubic().setOnComplete( () => {
             ScaleBack(Boton);
         });        
     }
@@ -111,6 +133,56 @@ public class ButtonsBehavior: MonoBehaviour
 
             } else if (nuevoValorSlider < sliderDificultad.value ) {
                 sliderDificultad.value -= Time.deltaTime * 2f;
+            }
+        }
+    }
+
+    public void AparecerBoton (GameObject botonQueAparece) {
+        if (botonQueAparece.activeSelf == false) {
+            botonQueAparece.SetActive(true);
+        }
+        LeanTween.scale(botonQueAparece, Vector3.zero, 0f).setOnComplete(() => {
+            LeanTween.scale (botonQueAparece, Vector3.one * 5.29f, .5f).setEaseOutBounce();
+        });
+    }
+
+    public void DesaparecerBoton (GameObject botonQueDesaparece) {
+        LeanTween.scale(botonQueDesaparece, Vector3.zero, .5f).setEaseOutBounce().setOnComplete ( ()=> {
+            botonQueDesaparece.SetActive(false);
+        });
+        
+    }
+
+    public void AnimacionBotonesAparecer (int botonInicial) {
+        int cuentaBotones = botonInicial;
+        contarTiempo = true;
+
+        while (cuentaBotones <= botones.Length - 1) {
+            
+            if (intervaloDeTiempo >= 0f) {
+                UnityEngine.Debug.Log(intervaloDeTiempo);
+            } else {
+                AparecerBoton(botones [cuentaBotones]);
+                cuentaBotones++;
+                contarTiempo = true;
+            }
+        }
+        
+
+    }
+
+    public void AnimacionBotonesDesaparecer (int botonInicial) {
+        int cuentaBotones = botonInicial;
+        contarTiempo = true;
+
+        while (cuentaBotones <= botones.Length - 1) {
+
+            if (intervaloDeTiempo >= 0f) {
+                UnityEngine.Debug.Log(intervaloDeTiempo);
+            } else {
+                DesaparecerBoton(botones [cuentaBotones]);
+                cuentaBotones++;
+                contarTiempo = true;
             }
         }
     }
