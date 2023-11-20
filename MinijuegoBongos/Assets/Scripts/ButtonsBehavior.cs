@@ -155,10 +155,10 @@ public class ButtonsBehavior: MonoBehaviour
             });
 
         } else if (nuevoValorSlider < valorActualSlider) {
-            LeanTween.value(gameObject, 1f, 0f, 1f).setEaseInCubic().setOnUpdate((float val) => {
+            LeanTween.value(gameObject, 1f, 0f, 1.25f).setEaseOutCubic().setOnUpdate((float val) => {
                 valorActualSlider = val;
                 sliderDificultad.value = valorActualSlider;
-            }).setDelay(.25f).setOnComplete(() => {
+            }).setDelay(.4f).setOnComplete(() => {
                 valorActualSlider = 0f;
                 sliderDificultad.value = valorActualSlider;
             });
