@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CameraMovStart : MonoBehaviour
@@ -16,7 +17,7 @@ public class CameraMovStart : MonoBehaviour
         nuevaPos = GameObject.Find ("GameCameraPos").transform.position;
         nuevaRot = GameObject.Find ("GameCameraPos").transform.rotation;
         menuCanvas = GameObject.Find ("Canvas");
-        logotipo = GameObject.Find("Quad");
+        logotipo = GameObject.Find("RawImage-DisplayVideo");
         menuCanvasGroup = menuCanvas.GetComponent<CanvasGroup> ();
     }
     private void Update () {
@@ -43,21 +44,28 @@ public class CameraMovStart : MonoBehaviour
             }
 
             if (mismaPos == true && mismaRot == true)
+            {
                 animar = false;
+                float y = 0f;
+                LeanTween.value(y, 1f, 1f).setOnComplete(() =>
+                {
+                    SceneManager.LoadScene("EscenaPrincipal", LoadSceneMode.Single);
+                });
+            }
         }
-    }
-
-
-    public void AnimacionOpciones () {
-    
     }
 
     public void AnimacionQuitarCanvas () {
         animar = true;
-        //menuCanvas.GetComponent<GraphicRaycaster> ().enabled = false;
-        LeanTween.alphaCanvas (menuCanvasGroup, 0f, 2f);
-        logotipo.SetActive(false);
+        menuCanvas.GetComponent<GraphicRaycaster> ().enabled = false;
+        LeanTween.moveLocal(logotipo, Vector3.zero, 3f).setOnComplete(() =>
+        {
+            float x = 0f;
+            LeanTween.value(x, 1f, .5f).setOnComplete(() => {
+                x = 0f;
+                logotipo.SetActive(false);
+            });
+        });
+        LeanTween.alphaCanvas (menuCanvasGroup, 0.0001f, 3f);
     }
-
-
 }

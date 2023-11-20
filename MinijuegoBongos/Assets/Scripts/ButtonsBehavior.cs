@@ -4,13 +4,17 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using System.Collections.Specialized;
 
 public class ButtonsBehavior: MonoBehaviour
 {
-    public GameObject sliderDificultadGameObject;
+    public GameObject sliderDificultadGameObject, bandejaOpciones;
     Slider sliderDificultad;
-    float nuevoValorSlider = 0f, escalaBotonesMenu = 5.29f, escalaBotonesPeques = 4.23f;
-    public GameObject [] botones;
+    float nuevoValorSlider = 0f, escalaBotonesMenu = 5.29f, escalaBotonesDificultad = 4.23f;
+    public GameObject [] botonesMenu;
+    public GameObject [] botonesDificultad;
+    public GameObject[] botonesOpciones;
+    public Canvas mainCanvas;
 
     public enum EstadosBoton
     {
@@ -30,9 +34,9 @@ public class ButtonsBehavior: MonoBehaviour
     }
 
     private void Start () {
-        AparecerBoton(botones [0], 0f, escalaBotonesMenu);
-        AparecerBoton(botones [1], .125f, escalaBotonesMenu);
-        AparecerBoton(botones [2], .25f, escalaBotonesMenu);
+        AparecerBoton(botonesMenu [0], 0f, botonesMenu [0].GetComponent<ButtonScaler>().escalaPropia);
+        AparecerBoton(botonesMenu [1], .125f, botonesMenu [1].GetComponent<ButtonScaler>().escalaPropia);
+        AparecerBoton(botonesMenu [2], .25f, botonesMenu [2].GetComponent<ButtonScaler>().escalaPropia);
     }
 
     public void CambiarEstados (int valor)
@@ -65,18 +69,18 @@ public class ButtonsBehavior: MonoBehaviour
                 AbrirCerrarDificultad();
 
                 if (nuevoValorSlider == 1) {
-                    DesaparecerBoton(botones [1], 0f);
-                    DesaparecerBoton(botones [2], .125f);
-                    AparecerBoton(botones [3], .5f, escalaBotonesPeques);
-                    AparecerBoton(botones [4], .625f, escalaBotonesPeques);
-                    AparecerBoton(botones [5], .75f, escalaBotonesPeques);
+                    DesaparecerBoton(botonesMenu [1], 0f);
+                    DesaparecerBoton(botonesMenu [2], .125f);
+                    AparecerBoton(botonesDificultad [0], .5f, botonesDificultad [0].GetComponent<ButtonScaler>().escalaPropia);
+                    AparecerBoton(botonesDificultad [1], .625f, botonesDificultad [1].GetComponent<ButtonScaler>().escalaPropia);
+                    AparecerBoton(botonesDificultad [2], .75f, botonesDificultad [2].GetComponent<ButtonScaler>().escalaPropia);
 
                 } else {
-                    DesaparecerBoton(botones [5], 0f);
-                    DesaparecerBoton(botones [4], .125f);
-                    DesaparecerBoton(botones [3], .25f);
-                    AparecerBoton(botones [2], .625f, escalaBotonesMenu);
-                    AparecerBoton(botones [1], .75f, escalaBotonesMenu);
+                    DesaparecerBoton(botonesDificultad [2], 0f);
+                    DesaparecerBoton(botonesDificultad [1], .125f);
+                    DesaparecerBoton(botonesDificultad [0], .25f);
+                    AparecerBoton(botonesMenu [2], .625f, botonesMenu [2].GetComponent<ButtonScaler>().escalaPropia);
+                    AparecerBoton(botonesMenu [1], .75f, botonesMenu [1].GetComponent<ButtonScaler>().escalaPropia);
                 }
                 break;
 
@@ -84,6 +88,7 @@ public class ButtonsBehavior: MonoBehaviour
 
             case EstadosBoton.estadoOpciones:
                 UnityEngine.Debug.Log("Opciones");
+                AbrirCerrarOpciones();
                 break;
 
 
@@ -101,45 +106,7 @@ public class ButtonsBehavior: MonoBehaviour
         }    
     }
 
-    public void ScaleUp (GameObject botonAEscalar) {
-        float escalaPropia;
 
-        if (botonAEscalar == botones [3] || botonAEscalar == botones [4] || botonAEscalar == botones [5]) {
-            escalaPropia = escalaBotonesPeques;
-
-        } else {
-            escalaPropia = escalaBotonesMenu;
-        }
-        LeanTween.scale(botonAEscalar, Vector3.one * 1.05f * escalaPropia, .15f).setEaseOutCubic();
-    }
-
-    public void ScaleDown (GameObject botonAEscalar) {
-        float escalaPropia;
-
-        if (botonAEscalar == botones [3] || botonAEscalar == botones [4] || botonAEscalar == botones [5]) {
-            escalaPropia = escalaBotonesPeques;
-
-        } else {
-            escalaPropia = escalaBotonesMenu;
-        }
-
-        LeanTween.scale(botonAEscalar, Vector3.one * .95f * escalaPropia, .15f).setEaseOutCubic().setOnComplete( () => {
-            LeanTween.scale(botonAEscalar, Vector3.one * escalaPropia, .15f).setEaseOutCubic();
-        });        
-    }
-
-    public void ScaleBack (GameObject botonAEscalar) {
-        float escalaPropia;
-
-        if (botonAEscalar == botones [3] || botonAEscalar == botones [4] || botonAEscalar == botones [5]) {
-            escalaPropia = escalaBotonesPeques;
-
-        } else {
-            escalaPropia = escalaBotonesMenu;
-        }
-
-        LeanTween.scale(botonAEscalar, Vector3.one * escalaPropia, .15f).setEaseOutCubic();
-    }
 
     public void AbrirCerrarDificultad () {
         float valorActualSlider = sliderDificultad.value;
@@ -165,13 +132,34 @@ public class ButtonsBehavior: MonoBehaviour
         }
     }
 
-    public void AparecerBoton (GameObject botonQueAparece, float delayAnimacion, float escalaPropia) {
+    public void AbrirCerrarOpciones ()
+    {
+        if (bandejaOpciones.activeSelf == false)
+        {
+            bandejaOpciones.SetActive(true);
+            mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
+            LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 0f);
+            LeanTween.moveLocal(bandejaOpciones, Vector3.zero, 1.5f).setEaseOutBounce().setOnComplete (() =>
+            {
+                mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;
+            });
+        } else
+        {
+            LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 1f).setEaseOutCubic().setOnComplete(() =>
+            {
+                bandejaOpciones.SetActive(false);
+                mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;    
+            });
+        }
+    }
+
+    public void AparecerBoton (GameObject botonQueAparece, float delayAnimacion, float escalaBoton) {
 
         if (botonQueAparece.activeSelf == false) {
             botonQueAparece.SetActive(true);
         }
         LeanTween.scale(botonQueAparece, Vector3.zero, 0f).setOnComplete(() => {
-            LeanTween.scale (botonQueAparece, Vector3.one * escalaPropia, .75f).setEaseOutCubic().setDelay(delayAnimacion);
+            LeanTween.scale (botonQueAparece, Vector3.one * escalaBoton, .75f).setEaseOutCubic().setDelay(delayAnimacion);
         });
     }
 
