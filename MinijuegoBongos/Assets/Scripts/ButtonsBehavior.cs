@@ -8,7 +8,8 @@ using System.Collections.Specialized;
 
 public class ButtonsBehavior: MonoBehaviour
 {
-    public GameObject sliderDificultadGameObject, bandejaOpciones;
+    public GameObject sliderDificultadGameObject, bandejaOpciones, ultimoBoton;
+    public KeyCode botonStart;
     Slider sliderDificultad;
     float nuevoValorSlider = 0f, escalaBotonesMenu = 5.29f, escalaBotonesDificultad = 4.23f;
     public GameObject [] botonesMenu;
@@ -28,6 +29,7 @@ public class ButtonsBehavior: MonoBehaviour
 
     void Awake ()
     {
+        DontDestroyOnLoad(gameObject);
         sliderDificultad = sliderDificultadGameObject.GetComponent<Slider>();
         estadoActual = EstadosBoton.estadoPorDefecto;
         UnityEngine.Debug.Log(estadoActual);
@@ -37,6 +39,14 @@ public class ButtonsBehavior: MonoBehaviour
         AparecerBoton(botonesMenu [0], 0f, botonesMenu [0].GetComponent<ButtonScaler>().escalaPropia);
         AparecerBoton(botonesMenu [1], .125f, botonesMenu [1].GetComponent<ButtonScaler>().escalaPropia);
         AparecerBoton(botonesMenu [2], .25f, botonesMenu [2].GetComponent<ButtonScaler>().escalaPropia);
+    }
+
+    void Update ()
+    {
+        if (Input.GetKeyDown(botonStart) && LeanTween.isTweening(bandejaOpciones) == false)
+        {
+            CambiarEstados(1);
+        }
     }
 
     public void CambiarEstados (int valor)
@@ -66,22 +76,34 @@ public class ButtonsBehavior: MonoBehaviour
 
             case EstadosBoton.estadoSeleccionarDificultad:
                 UnityEngine.Debug.Log("Cambiar Dificultad");
-                AbrirCerrarDificultad();
+                if (LeanTween.isTweening(gameObject) == false)
+                {
+                    AbrirCerrarDificultad();
 
-                if (nuevoValorSlider == 1) {
-                    DesaparecerBoton(botonesMenu [1], 0f);
-                    DesaparecerBoton(botonesMenu [2], .125f);
-                    AparecerBoton(botonesDificultad [0], .5f, botonesDificultad [0].GetComponent<ButtonScaler>().escalaPropia);
-                    AparecerBoton(botonesDificultad [1], .625f, botonesDificultad [1].GetComponent<ButtonScaler>().escalaPropia);
-                    AparecerBoton(botonesDificultad [2], .75f, botonesDificultad [2].GetComponent<ButtonScaler>().escalaPropia);
+                    if (nuevoValorSlider == 1)
+                    {
+                        mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
+                        ultimoBoton = botonesDificultad [2];
+                        DesaparecerBoton(botonesMenu [1], 0f);
+                        DesaparecerBoton(botonesMenu [2], .125f);
+                        AparecerBoton(botonesDificultad [0], .5f, botonesDificultad [0].GetComponent<ButtonScaler>().escalaPropia);
+                        AparecerBoton(botonesDificultad [1], .625f, botonesDificultad [1].GetComponent<ButtonScaler>().escalaPropia);
+                        AparecerBoton(botonesDificultad [2], .75f, botonesDificultad [2].GetComponent<ButtonScaler>().escalaPropia);
 
-                } else {
-                    DesaparecerBoton(botonesDificultad [2], 0f);
-                    DesaparecerBoton(botonesDificultad [1], .125f);
-                    DesaparecerBoton(botonesDificultad [0], .25f);
-                    AparecerBoton(botonesMenu [2], .625f, botonesMenu [2].GetComponent<ButtonScaler>().escalaPropia);
-                    AparecerBoton(botonesMenu [1], .75f, botonesMenu [1].GetComponent<ButtonScaler>().escalaPropia);
+
+                    } else
+                    {
+                        mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
+                        ultimoBoton = botonesMenu [1];
+                        DesaparecerBoton(botonesDificultad [2], 0f);
+                        DesaparecerBoton(botonesDificultad [1], .125f);
+                        DesaparecerBoton(botonesDificultad [0], .25f);
+                        AparecerBoton(botonesMenu [2], .625f, botonesMenu [2].GetComponent<ButtonScaler>().escalaPropia);
+                        AparecerBoton(botonesMenu [1], .75f, botonesMenu [1].GetComponent<ButtonScaler>().escalaPropia);
+                    }
                 }
+
+                
                 break;
 
 
@@ -108,7 +130,9 @@ public class ButtonsBehavior: MonoBehaviour
 
 
 
+
     public void AbrirCerrarDificultad () {
+        mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
         float valorActualSlider = sliderDificultad.value;
         nuevoValorSlider = 1 - nuevoValorSlider;
 
@@ -119,6 +143,7 @@ public class ButtonsBehavior: MonoBehaviour
             }).setOnComplete(() => {
                 valorActualSlider = 1f;
                 sliderDificultad.value = valorActualSlider;
+                mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;
             });
 
         } else if (nuevoValorSlider < valorActualSlider) {
@@ -128,12 +153,14 @@ public class ButtonsBehavior: MonoBehaviour
             }).setDelay(.4f).setOnComplete(() => {
                 valorActualSlider = 0f;
                 sliderDificultad.value = valorActualSlider;
+                mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;
             });
         }
     }
 
     public void AbrirCerrarOpciones ()
     {
+        mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
         if (bandejaOpciones.activeSelf == false)
         {
             bandejaOpciones.SetActive(true);
@@ -159,8 +186,16 @@ public class ButtonsBehavior: MonoBehaviour
             botonQueAparece.SetActive(true);
         }
         LeanTween.scale(botonQueAparece, Vector3.zero, 0f).setOnComplete(() => {
-            LeanTween.scale (botonQueAparece, Vector3.one * escalaBoton, .75f).setEaseOutCubic().setDelay(delayAnimacion);
+            LeanTween.scale (botonQueAparece, Vector3.one * escalaBoton, .75f).setEaseOutCubic().setDelay(delayAnimacion).setOnComplete ( ()=>
+            {
+                if (botonQueAparece == ultimoBoton)
+                {
+                    mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;
+                }
+            });
         });
+
+        
     }
 
     public void DesaparecerBoton (GameObject botonQueDesaparece, float delayAnimacion) {

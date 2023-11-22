@@ -8,17 +8,17 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public float dificultadJuego = 1, volumenJuego = 100;
+    public float dificultadJuego = 1, volumenJuegoMaestro = 100f, volumenJuegoMusica = 100f, volumenJuegoFX = 100f;
     public AudioMixer mezclador;
-    public Slider barraVolumen;
-    public TextMeshProUGUI textoVolumen;
+    public Slider barraVolumenMaestro, barraVolumenMusica, barraVolumenFX;
+    public TextMeshProUGUI textoVolumenMaestro, textoVolumenMusica, textoVolumenFX;
     public GameObject menuOpciones;
-
     
     // Start is called before the first frame update
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(menuOpciones);
         DetectarSonido();
     }
 
@@ -30,27 +30,42 @@ public class GameManager : MonoBehaviour
     void Update()
     {
     //El Audio Source desaparecerá al cambiar la escena, por lo que necesitamos tomar el otro
-        if (barraVolumen == null) {
+        if (barraVolumenMaestro == null) {
             DetectarSonido();
         }        
     }
 
     public void DetectarSonido () {
-        menuOpciones = GameObject.Find("FondosOpciones");
-        barraVolumen = GameObject.Find("Volumen Barra").GetComponent<Slider>();
-        volumenJuego = barraVolumen.value;
-        mezclador.SetFloat("Volumen", 0f - 35f * ((100f - volumenJuego) / 100f));
-        textoVolumen = GameObject.Find("Volumen").GetComponent<TextMeshProUGUI>();
+        volumenJuegoMaestro = barraVolumenMaestro.value;
+        volumenJuegoMusica = barraVolumenMusica.value;
+        volumenJuegoFX = barraVolumenFX.value;
+        mezclador.SetFloat("VolumenMaestro", 0f - 35f * ((100f - volumenJuegoMaestro) / 100f));
+        mezclador.SetFloat("VolumenMusica", 0f - 35f * ((100f - volumenJuegoMusica) / 100f));
+        mezclador.SetFloat("VolumenFX", 0f - 35f * ((100f - volumenJuegoFX) / 100f));
         menuOpciones.SetActive(false);
     }
 
     public void CambiarVolumen () {
-        volumenJuego = barraVolumen.value;
-        mezclador.SetFloat("Volumen", 0f - 35f * ((100f- volumenJuego) / 100f));
-        if (volumenJuego == 0f) {
-            mezclador.SetFloat("Volumen", -100f);
+        volumenJuegoMaestro = barraVolumenMaestro.value;
+        volumenJuegoMusica = barraVolumenMusica.value;
+        volumenJuegoFX = barraVolumenFX.value;
+        mezclador.SetFloat("VolumenMaestro", 0f - 35f * ((100f- volumenJuegoMaestro) / 100f));
+        mezclador.SetFloat("VolumenMusica", 0f - 35f * ((100f- volumenJuegoMusica) / 100f));
+        mezclador.SetFloat("VolumenFX", 0f - 35f * ((100f- volumenJuegoFX) / 100f));
+        if (volumenJuegoMaestro == 0f) {
+            mezclador.SetFloat("VolumenMaestro", -100f);
+        } else if (volumenJuegoMusica == 0f)
+        {
+            mezclador.SetFloat("VolumenMusica", -100f);
+        
+        } else if (volumenJuegoFX == 0f)
+        {
+            mezclador.SetFloat("VolumenFX", -100f);
+        
         }
-        textoVolumen.text = volumenJuego.ToString();
+        textoVolumenMaestro.text = volumenJuegoMaestro.ToString();
+        textoVolumenMusica.text = volumenJuegoMusica.ToString();
+        textoVolumenFX.text = volumenJuegoFX.ToString();
     }
 
     public void CambiarDificultad (float nuevaDificultad)
