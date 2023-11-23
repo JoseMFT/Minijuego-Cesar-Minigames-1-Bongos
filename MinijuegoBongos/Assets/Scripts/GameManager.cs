@@ -5,30 +5,38 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
-
+using System.Collections.Specialized;
+using System.Diagnostics;
 
 public class GameManager : MonoBehaviour
 {
-    public float dificultadJuego = 1, volumenJuegoMaestro = 100f, volumenJuegoMusica = 100f, volumenJuegoFX = 100f;
-    List <GameObject> arrayOriginales;
-    public int cargasDeEscena = 0;
+    public float velocidadJuego = 1, volumenJuegoMaestro, volumenJuegoMusica, volumenJuegoFX;
+    public int creadosPorEscena = 0, dificultad = 0;
     public AudioMixer mezclador;
     public Slider barraVolumenMaestro, barraVolumenMusica, barraVolumenFX;
     public TextMeshProUGUI textoVolumenMaestro, textoVolumenMusica, textoVolumenFX;
-    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara;
+    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara;
+    GameObject [] objNuevos; 
+    public GameObject[] canciones;
     
     // Start is called before the first frame update
     void Awake()
     {
+        //volumenJuegoMaestro = (volMast / 35f * 100f + 100);
+        //UnityEngine.Debug.Log("Valor del volMast recibido: " + volMast.ToString() + ", valor del volMast del Juego: " + volumenJuegoMaestro.ToString());
+
+        objNuevos = SceneManager.GetSceneByName("Menu").GetRootGameObjects();
         DontDestroyOnLoad(canvasOpciones);
         DontDestroyOnLoad(posicionDeCamara);
+        BorrarDuplicados();
         DetectarSonido();
     }
 
     private void Start () {
-        arrayOriginales.Add(posicionDeCamara);
-        arrayOriginales.Add(canvasOpciones);
-        //DetectarSonido();        
+        /*foreach (GameObject objOriginal in objNuevos)
+        {
+            UnityEngine.Debug.Log(objOriginal);
+        }*/
     }
 
     // Update is called once per frame
@@ -48,21 +56,35 @@ public class GameManager : MonoBehaviour
             botonSalirOpciones.SetActive(false);
             botonMenuOpciones.SetActive(false);
         }
-        if (cargasDeEscena != 0)
+        
+        if (SceneManager.GetActiveScene().name == "EscenaPrincipal" && canciones [dificultad].activeSelf == false)
         {
-            BorrarDuplicados();
-            cargasDeEscena = 0;
+            mezclador.SetFloat("VelocidadMusica", velocidadJuego);
+            canciones [dificultad].SetActive(true);
         }
     }
 
     public void DetectarSonido () {
-        volumenJuegoMaestro = barraVolumenMaestro.value;
-        volumenJuegoMusica = barraVolumenMusica.value;
-        volumenJuegoFX = barraVolumenFX.value;
-        mezclador.SetFloat("VolumenMaestro", 0f - 35f * ((100f - volumenJuegoMaestro) / 100f));
-        mezclador.SetFloat("VolumenMusica", 0f - 35f * ((100f - volumenJuegoMusica) / 100f));
-        mezclador.SetFloat("VolumenFX", 0f - 35f * ((100f - volumenJuegoFX) / 100f));
-        menuOpciones.transform.localPosition = new Vector3 (0f, 1100f, 0f);
+        mezclador.ClearFloat("VolumenMaestro");
+        mezclador.GetFloat("VolumenMaestro", out volumenJuegoMaestro);
+        UnityEngine.Debug.Log("Vol maestro: " + volumenJuegoMaestro.ToString());
+        volumenJuegoMaestro = (volumenJuegoMaestro / 35f * 100f + 100);
+        UnityEngine.Debug.Log("Vol maestro: " + volumenJuegoMaestro.ToString());
+        barraVolumenMaestro.value = volumenJuegoMaestro;
+
+        mezclador.ClearFloat("VolumenMusica");
+        mezclador.GetFloat("VolumenMusica", out volumenJuegoMusica);
+        UnityEngine.Debug.Log("Vol musica: " + volumenJuegoMusica.ToString());
+        volumenJuegoMusica = (volumenJuegoMusica / 35f * 100f + 100);
+        UnityEngine.Debug.Log("Vol musica: " + volumenJuegoMusica.ToString());
+        barraVolumenMusica.value = volumenJuegoMusica;
+
+        mezclador.ClearFloat("VolumenFX");
+        mezclador.GetFloat("VolumenFX", out volumenJuegoFX);
+        UnityEngine.Debug.Log("Vol FX: " + volumenJuegoFX.ToString());
+        volumenJuegoFX = (volumenJuegoFX / 35f * 100f + 100);
+        UnityEngine.Debug.Log("Vol FX: " + volumenJuegoFX.ToString());
+        barraVolumenFX.value = volumenJuegoFX;
     }
 
     public void CambiarVolumen () {
@@ -87,34 +109,44 @@ public class GameManager : MonoBehaviour
         textoVolumenFX.text = volumenJuegoFX.ToString();
     }
 
-    public void CambiarDificultad (float nuevaDificultad)
+    public void CambiarDificultad (int nuevaDificultad)
     {
-        dificultadJuego = nuevaDificultad;
+        dificultad = nuevaDificultad;
+        if (dificultad == 0)
+        {
+            velocidadJuego = 1f;
+
+        } else if (dificultad == 1)
+        {
+            velocidadJuego = 1.15f;
+
+        } else if (dificultad == 2)
+        {
+            velocidadJuego = 1.30f;
+        }
     }
     public void VolverMenu ()
     {
         botonMenuOpciones.SetActive(false);
         botonSalirOpciones.SetActive(false);
-        cargasDeEscena++;
+        menuOpciones.transform.localPosition = new Vector3(0f, 1100f, 0f);
         SceneManager.LoadScene("Menu");
+        mezclador.SetFloat("VelocidadMusica", 100f);
+        canciones [dificultad].SetActive(false);
+        Destroy(posicionDeCamara);
+        Destroy(gameObject);
     }
 
     public void BorrarDuplicados ()
     {
-        GameObject [] arrayDuplicados = SceneManager.GetSceneByName("Menu").GetRootGameObjects();
-        int indiceArray = 0;
-        while (indiceArray < arrayOriginales.ToArray().Length) {
+        GameObject objOriginales;
+            foreach (GameObject objCreados in objNuevos) {
+                objOriginales = GameObject.Find(objCreados.name);
 
-            foreach (GameObject objDuplicado in arrayDuplicados) {
-
-                if (objDuplicado.name == arrayOriginales.ToArray()[indiceArray].name) {
-                    Destroy(objDuplicado);
+                if (objOriginales != objCreados && objOriginales.name == objCreados.name && objOriginales != null)
+                {
+                    Destroy(objOriginales);
                 }
             }
-
-            indiceArray++;
-        }
-
-        indiceArray = 0;
     }
 }

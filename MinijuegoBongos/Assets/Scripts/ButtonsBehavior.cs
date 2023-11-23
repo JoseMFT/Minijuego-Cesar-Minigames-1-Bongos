@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
 using System.Collections.Specialized;
@@ -11,10 +12,10 @@ public class ButtonsBehavior: MonoBehaviour
     public GameObject sliderDificultadGameObject, bandejaOpciones, ultimoBoton;
     public KeyCode botonStart;
     Slider sliderDificultad;
-    float nuevoValorSlider = 0f, escalaBotonesMenu = 5.29f, escalaBotonesDificultad = 4.23f;
+    float nuevoValorSlider = 0f;
     public GameObject [] botonesMenu;
     public GameObject [] botonesDificultad;
-    public GameObject[] botonesOpciones;
+    public GameObject [] botonesOpciones;
     public Canvas mainCanvas, canvasOpciones;
 
     public enum EstadosBoton
@@ -32,9 +33,11 @@ public class ButtonsBehavior: MonoBehaviour
         sliderDificultad = sliderDificultadGameObject.GetComponent<Slider>();
         estadoActual = EstadosBoton.estadoPorDefecto;
         UnityEngine.Debug.Log(estadoActual);
+
     }
 
     private void Start () {
+
         AparecerBoton(botonesMenu [0], 0f, botonesMenu [0].GetComponent<ButtonScaler>().escalaPropia);
         AparecerBoton(botonesMenu [1], .125f, botonesMenu [1].GetComponent<ButtonScaler>().escalaPropia);
         AparecerBoton(botonesMenu [2], .25f, botonesMenu [2].GetComponent<ButtonScaler>().escalaPropia);
@@ -54,7 +57,7 @@ public class ButtonsBehavior: MonoBehaviour
         if (valor == 0)
         {
             estadoActual = EstadosBoton.estadoSeleccionarDificultad;
-            
+
 
         } else if (valor == 1)
         {
@@ -102,7 +105,7 @@ public class ButtonsBehavior: MonoBehaviour
                     }
                 }
 
-                
+
                 break;
 
 
@@ -124,7 +127,7 @@ public class ButtonsBehavior: MonoBehaviour
                 }
                 break;
 
-        }    
+        }
     }
 
 
@@ -162,11 +165,11 @@ public class ButtonsBehavior: MonoBehaviour
 
         CheckearCanvasMenu(false);
         canvasOpciones.GetComponent<GraphicRaycaster>().enabled = false;
-        
+
         if (bandejaOpciones.transform.localPosition.y == 1100f)
         {
             LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 0f);
-            LeanTween.moveLocal(bandejaOpciones, Vector3.zero, 1.5f).setEaseOutBounce().setOnComplete (() =>
+            LeanTween.moveLocal(bandejaOpciones, Vector3.zero, 1.5f).setEaseOutBounce().setOnComplete(() =>
             {
                 CheckearCanvasMenu(true);
                 canvasOpciones.GetComponent<GraphicRaycaster>().enabled = true;
@@ -175,7 +178,7 @@ public class ButtonsBehavior: MonoBehaviour
         {
             LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 1f).setEaseOutCubic().setOnComplete(() =>
             {
-                CheckearCanvasMenu(true);   
+                CheckearCanvasMenu(true);
             });
         }
     }
@@ -186,20 +189,20 @@ public class ButtonsBehavior: MonoBehaviour
             botonQueAparece.SetActive(true);
         }
         LeanTween.scale(botonQueAparece, Vector3.zero, 0f).setOnComplete(() => {
-            LeanTween.scale (botonQueAparece, Vector3.one * escalaBoton, .75f).setEaseOutCubic().setDelay(delayAnimacion).setOnComplete ( ()=>
+            LeanTween.scale(botonQueAparece, Vector3.one * escalaBoton, .75f).setEaseOutCubic().setDelay(delayAnimacion).setOnComplete(() =>
             {
                 if (botonQueAparece == ultimoBoton)
                 {
-                    CheckearCanvasMenu(true);                    
+                    CheckearCanvasMenu(true);
                 }
             });
-        });        
+        });
     }
 
     public void DesaparecerBoton (GameObject botonQueDesaparece, float delayAnimacion) {
         LeanTween.scale(botonQueDesaparece, Vector3.zero, .75f).setEaseOutCubic().setOnComplete(() => {
             botonQueDesaparece.SetActive(false);
-        }).setDelay(delayAnimacion);        
+        }).setDelay(delayAnimacion);
     }
 
     public void CheckearCanvasMenu (bool nuevoEstado)

@@ -15,7 +15,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 1168776177555620204}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -55,6 +55,8 @@ AudioMixerController:
     name: VolumenMaestro
   - guid: c45daed87b52a0d42bafe21b49bc0ed1
     name: VolumenMusica
+  - guid: 889801bb574b8b84fb03a53a0ce293bc
+    name: VelocidadMusica
   m_AudioMixerGroupViews:
   - guids:
     - df8af7076aae25f4eacec89a19789227
@@ -109,6 +111,9 @@ AudioMixerSnapshotController:
   m_SnapshotID: 15368fdb2c6f18243b71a5080f4c5f83
   m_FloatValues:
     88308bc4546826043930527bee1ec0a8: 0
+    3fb058d45ae3a1b4baac40fbe4dae4ee: 0
+    c45daed87b52a0d42bafe21b49bc0ed1: 0
+    889801bb574b8b84fb03a53a0ce293bc: 1
     4a08b23ff393ab847bcae77e1434e12c: 1
   m_TransitionOverrides: {}
 --- !u!244 &1168776177555620204
@@ -140,7 +145,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -2956259542784235249}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
