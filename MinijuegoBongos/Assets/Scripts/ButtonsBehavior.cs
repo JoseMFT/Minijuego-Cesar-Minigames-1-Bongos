@@ -15,7 +15,7 @@ public class ButtonsBehavior: MonoBehaviour
     public GameObject [] botonesMenu;
     public GameObject [] botonesDificultad;
     public GameObject[] botonesOpciones;
-    public Canvas mainCanvas;
+    public Canvas mainCanvas, canvasOpciones;
 
     public enum EstadosBoton
     {
@@ -29,7 +29,6 @@ public class ButtonsBehavior: MonoBehaviour
 
     void Awake ()
     {
-        DontDestroyOnLoad(gameObject);
         sliderDificultad = sliderDificultadGameObject.GetComponent<Slider>();
         estadoActual = EstadosBoton.estadoPorDefecto;
         UnityEngine.Debug.Log(estadoActual);
@@ -160,22 +159,23 @@ public class ButtonsBehavior: MonoBehaviour
 
     public void AbrirCerrarOpciones ()
     {
-        mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
-        if (bandejaOpciones.activeSelf == false)
+
+        CheckearCanvasMenu(false);
+        canvasOpciones.GetComponent<GraphicRaycaster>().enabled = false;
+        
+        if (bandejaOpciones.transform.localPosition.y == 1100f)
         {
-            bandejaOpciones.SetActive(true);
-            mainCanvas.GetComponent<GraphicRaycaster>().enabled = false;
             LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 0f);
             LeanTween.moveLocal(bandejaOpciones, Vector3.zero, 1.5f).setEaseOutBounce().setOnComplete (() =>
             {
-                mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;
+                CheckearCanvasMenu(true);
+                canvasOpciones.GetComponent<GraphicRaycaster>().enabled = true;
             });
         } else
         {
             LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 1f).setEaseOutCubic().setOnComplete(() =>
             {
-                bandejaOpciones.SetActive(false);
-                mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;    
+                CheckearCanvasMenu(true);   
             });
         }
     }
@@ -190,17 +190,23 @@ public class ButtonsBehavior: MonoBehaviour
             {
                 if (botonQueAparece == ultimoBoton)
                 {
-                    mainCanvas.GetComponent<GraphicRaycaster>().enabled = true;
+                    CheckearCanvasMenu(true);                    
                 }
             });
-        });
-
-        
+        });        
     }
 
     public void DesaparecerBoton (GameObject botonQueDesaparece, float delayAnimacion) {
         LeanTween.scale(botonQueDesaparece, Vector3.zero, .75f).setEaseOutCubic().setOnComplete(() => {
             botonQueDesaparece.SetActive(false);
         }).setDelay(delayAnimacion);        
+    }
+
+    public void CheckearCanvasMenu (bool nuevoEstado)
+    {
+        if (mainCanvas != null)
+        {
+            mainCanvas.GetComponent<GraphicRaycaster>().enabled = nuevoEstado;
+        }
     }
 }

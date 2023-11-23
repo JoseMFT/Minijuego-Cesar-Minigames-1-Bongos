@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CameraMovStart : MonoBehaviour
 {
     GameObject menuCanvas, logotipo;
+    public GameObject canvasOpciones;
     float velocidad = 1.25f;
     CanvasGroup menuCanvasGroup;
     public Vector3 nuevaPos, cameraPos;
@@ -14,8 +15,8 @@ public class CameraMovStart : MonoBehaviour
     public Quaternion nuevaRot, cameraRot;
 
     private void Awake () {
-        nuevaPos = GameObject.Find ("GameCameraPos").transform.position;
-        nuevaRot = GameObject.Find ("GameCameraPos").transform.rotation;
+        nuevaPos = GameObject.Find ("GameCameraPos").transform.localPosition;
+        nuevaRot = GameObject.Find ("GameCameraPos").transform.localRotation;
         menuCanvas = GameObject.Find ("Canvas");
         logotipo = GameObject.Find("RawImage-DisplayVideo");
         menuCanvasGroup = menuCanvas.GetComponent<CanvasGroup> ();
@@ -49,6 +50,7 @@ public class CameraMovStart : MonoBehaviour
                 float y = 0f;
                 LeanTween.value(y, 1f, 1f).setOnComplete(() =>
                 {
+                    canvasOpciones.SetActive(true);
                     SceneManager.LoadScene("EscenaPrincipal", LoadSceneMode.Single);
                 });
             }
@@ -58,6 +60,8 @@ public class CameraMovStart : MonoBehaviour
     public void AnimacionQuitarCanvas () {
         animar = true;
         menuCanvas.GetComponent<GraphicRaycaster> ().enabled = false;
+        canvasOpciones.SetActive(false);
+
         LeanTween.moveLocal(logotipo, Vector3.zero, 3f).setOnComplete(() =>
         {
             float x = 0f;

@@ -8,7 +8,7 @@ using System.Diagnostics;
 // -1570 a -1720
 public class GemasBehavior : MonoBehaviour
 {
-    public GameObject puntosGameObject, imagenBlanca, FXluz, FXestrellas;
+    public GameObject puntosGameObject, imagenBlanca, FXluz, FXestrellas, menuOpciones;
     Slider sliderPuntos;
     CanvasGroup canvas, blancaCanvas;
     public KeyCode buttonCode;
@@ -22,6 +22,7 @@ public class GemasBehavior : MonoBehaviour
         imagenBlanca.SetActive (false);
         sliderPuntos = puntosGameObject.GetComponent<Slider> ();
         blancaCanvas = imagenBlanca.GetComponent<CanvasGroup> ();
+        menuOpciones = GameObject.Find("Fondo Opciones");
     }
     void Start()
     {
@@ -30,31 +31,34 @@ public class GemasBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = transform.eulerAngles + new Vector3 (0f, 0f, 1f) * velocidad * Time.deltaTime;
-        transform.position = transform.position - new Vector3 (velocidad * 5f, -velocidad * (0f - sentidoY) , 0f) * Time.deltaTime;
+        if (menuOpciones.transform.localPosition.y == 1100f || LeanTween.isTweening(menuOpciones))
+        {
+            transform.eulerAngles = transform.eulerAngles + new Vector3 (0f, 0f, 1f) * velocidad * Time.deltaTime;
+            transform.position = transform.position - new Vector3 (velocidad * 5f, -velocidad * (0f - sentidoY) , 0f) * Time.deltaTime;
 
-        if (transform.localPosition.x < -1710) {
-            if (animando == false) {
-                sentidoY = .5f; 
-                imagenBlanca.SetActive (true);
-                imagenBlanca.GetComponent<Image> ().color = Color.black;
-                imagenBlanca.SetActive (false);
-                AnimacionDesaparecer ();
-            }
-        } else {
-            sentidoY = 0f;
-        }
-
-        if (puedeMarcar == true && puedeMarcar == CheckerPuedeMarcar()) {
-            if (gemaParalela == true) {
-                MarcarPuntos (.05f);
+            if (transform.localPosition.x < -1710) {
+                if (animando == false) {
+                    sentidoY = .5f; 
+                    imagenBlanca.SetActive (true);
+                    imagenBlanca.GetComponent<Image> ().color = Color.black;
+                    imagenBlanca.SetActive (false);
+                    AnimacionDesaparecer ();
+                }
             } else {
-                MarcarPuntos (.1f);
+                sentidoY = 0f;
             }
-        }
 
-        if (animando == false && sliderPuntos.value >= 1f) {
-            AnimacionDesaparecer();
+            if (puedeMarcar == true && puedeMarcar == CheckerPuedeMarcar()) {
+                if (gemaParalela == true) {
+                    MarcarPuntos (.05f);
+                } else {
+                    MarcarPuntos (.1f);
+                }
+            }
+
+            if (animando == false && sliderPuntos.value >= 1f) {
+                AnimacionDesaparecer();
+            }
         }
     }
 
