@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         mezclador.SetFloat("VelocidadMusica", 100f);
         canciones [dificultad].SetActive(false);
         Destroy(posicionDeCamara);
-        Destroy(gameObject);
+        Destroy(canvasOpciones);
     }
 
     public void BorrarDuplicados ()

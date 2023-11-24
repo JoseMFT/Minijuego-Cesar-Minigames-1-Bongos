@@ -31,7 +31,7 @@ public class GemasBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (menuOpciones.transform.localPosition.y == 1100f || LeanTween.isTweening(menuOpciones))
+        if (menuOpciones.transform.localPosition.y == 1100f && LeanTween.isTweening(menuOpciones) == false)
         {
             transform.eulerAngles = transform.eulerAngles + new Vector3 (0f, 0f, 1f) * velocidad * Time.deltaTime;
             transform.position = transform.position - new Vector3 (velocidad * 5f, -velocidad * (0f - sentidoY) , 0f) * Time.deltaTime;

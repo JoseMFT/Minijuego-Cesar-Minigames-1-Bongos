@@ -7,14 +7,19 @@ public class Spawner : MonoBehaviour
 {
     public int spawnID = 0;
     public Slider puntos;
-    public float tempo = .75f, defaultTempo = .75f;
+    public float tempo = 1f, defaultTempo = 1f;
     public string gemasTagUp, gemasTagDown;
     public GameObject[] poolUp, poolDown;
+    GameObject gameManager;
     bool creado = false;
 
     void Awake ()
-    {       
+    {
+        gameManager = GameObject.Find("GameManager");
+        defaultTempo = 1f * gameManager.GetComponent<GameManager>().velocidadJuego;
+        tempo = defaultTempo;
     }
+
     void Start()
     {
         poolUp = GameObject.FindGameObjectsWithTag(gemasTagUp);
