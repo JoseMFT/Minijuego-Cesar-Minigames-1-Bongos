@@ -9762,6 +9762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puntaje
       objectReference: {fileID: 0}
+    - target: {fileID: 6758937136441650787, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
+      propertyPath: estrellaFinal
+      value: 
+      objectReference: {fileID: 5439134988977627252}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9770,6 +9774,11 @@ PrefabInstance:
 --- !u!224 &5439134988977627251 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1476941547759222542, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
+  m_PrefabInstance: {fileID: 5439134988977627250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5439134988977627252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3955937049256282087, guid: 23badb40c8e38394eb5157a14489a2d1, type: 3}
   m_PrefabInstance: {fileID: 5439134988977627250}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5439134988977627257 stripped

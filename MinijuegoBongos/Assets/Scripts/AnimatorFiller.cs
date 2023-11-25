@@ -14,7 +14,6 @@ public class AnimatorFiller : MonoBehaviour
     private void Awake()
     {
         selfSlider = gameObject.GetComponent<Slider>();
-        estrellaFinal = GameObject.Find("Estrella llena");
         estCanvas = estrellaFinal.GetComponent<CanvasGroup> ();
         estCanvas.alpha = 0;
         estrellaFinal.SetActive(false);

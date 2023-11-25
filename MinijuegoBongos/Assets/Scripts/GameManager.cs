@@ -12,10 +12,11 @@ public class GameManager : MonoBehaviour
 {
     public float velocidadJuego = 1, volumenJuegoMaestro, volumenJuegoMusica, volumenJuegoFX;
     public int creadosPorEscena = 0, dificultad = 0;
+    Slider sliderPuntos;
     public AudioMixer mezclador;
     public Slider barraVolumenMaestro, barraVolumenMusica, barraVolumenFX;
     public TextMeshProUGUI textoVolumenMaestro, textoVolumenMusica, textoVolumenFX;
-    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara;
+    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara, victoria, derrota, canvasPropioFinal;
     GameObject [] objNuevos;
     public GameObject[] canciones;
     
@@ -47,11 +48,38 @@ public class GameManager : MonoBehaviour
             DetectarSonido();
         }
 
-        if (SceneManager.GetActiveScene().name == "EscenaPrincipal" && botonMenuOpciones.activeSelf == false)
+        if (SceneManager.GetActiveScene().name == "EscenaPrincipal")
         {
-            botonSalirOpciones.SetActive(true);
-            botonMenuOpciones.SetActive(true);
-        } else if (SceneManager.GetActiveScene().name == "Menu" && botonMenuOpciones.activeSelf == true)
+            if (botonMenuOpciones.activeSelf == false)
+            {
+                botonSalirOpciones.SetActive(true);
+                botonMenuOpciones.SetActive(true);
+            }
+
+            if (sliderPuntos == null)
+            {
+                sliderPuntos = GameObject.Find("Puntaje").GetComponent<Slider>();
+            } else
+            {
+                if (sliderPuntos.value < 1f)
+                {
+                    if (canciones [dificultad].GetComponent<AudioSource>().isPlaying == false && canciones [dificultad].activeSelf == true)
+                    {
+                        canciones [dificultad].SetActive(false);
+                        SceneManager.LoadScene("Final");
+                        canvasPropioFinal.SetActive(true);
+                        derrota.SetActive(true);
+                    }
+                } else
+                {
+                    canciones [dificultad].SetActive(false);
+                    SceneManager.LoadScene("Final");
+                    canvasPropioFinal.SetActive(true);
+                    victoria.SetActive(true);
+                }
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "Menu" && botonMenuOpciones.activeSelf == true)
         {
             botonSalirOpciones.SetActive(false);
             botonMenuOpciones.SetActive(false);
