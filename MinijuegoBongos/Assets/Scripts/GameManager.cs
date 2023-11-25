@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Slider barraVolumenMaestro, barraVolumenMusica, barraVolumenFX;
     public TextMeshProUGUI textoVolumenMaestro, textoVolumenMusica, textoVolumenFX;
     public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara;
-    GameObject [] objNuevos; 
+    GameObject [] objNuevos;
     public GameObject[] canciones;
     
     // Start is called before the first frame update
@@ -55,12 +55,6 @@ public class GameManager : MonoBehaviour
         {
             botonSalirOpciones.SetActive(false);
             botonMenuOpciones.SetActive(false);
-        }
-        
-        if (SceneManager.GetActiveScene().name == "EscenaPrincipal" && canciones [dificultad].activeSelf == false)
-        {
-            mezclador.SetFloat("VelocidadMusica", velocidadJuego);
-            canciones [dificultad].SetActive(true);
         }
     }
 
@@ -118,11 +112,11 @@ public class GameManager : MonoBehaviour
 
         } else if (dificultad == 1)
         {
-            velocidadJuego = 1.15f;
+            velocidadJuego = 1.25f;
 
         } else if (dificultad == 2)
         {
-            velocidadJuego = 1.30f;
+            velocidadJuego = 1.5f;
         }
     }
     public void VolverMenu ()
@@ -131,7 +125,7 @@ public class GameManager : MonoBehaviour
         botonSalirOpciones.SetActive(false);
         menuOpciones.transform.localPosition = new Vector3(0f, 1100f, 0f);
         SceneManager.LoadScene("Menu");
-        mezclador.SetFloat("VelocidadMusica", 100f);
+        mezclador.SetFloat("VelocidadMusica", 1f);
         canciones [dificultad].SetActive(false);
         Destroy(posicionDeCamara);
         Destroy(canvasOpciones);

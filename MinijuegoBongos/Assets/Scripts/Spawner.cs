@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     void Awake ()
     {
         gameManager = GameObject.Find("GameManager");
-        defaultTempo = 1f * gameManager.GetComponent<GameManager>().velocidadJuego;
+        defaultTempo = 1f / (gameManager.GetComponent<GameManager>().velocidadJuego * 2);
         tempo = defaultTempo;
     }
 

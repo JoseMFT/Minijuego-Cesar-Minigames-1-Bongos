@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ScriptAnimBongos : MonoBehaviour
 {
     public  Animator anim;
     public AudioSource sonidoBongoL, sonidoBongoR, esteSonido;
-    public GameObject menuOpciones;
+    GameObject menuOpciones, canvasOpciones;
     public KeyCode BongoL, BongoR, otraTecla;
     public float tiempoEspera = .05f;
     const float ktiempoEsperaReferencia = .05f;
@@ -17,12 +19,14 @@ public class ScriptAnimBongos : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         menuOpciones = GameObject.Find("Fondo Opciones");
+        canvasOpciones = GameObject.Find("CanvasOpciones");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (menuOpciones.transform.localPosition.y == 1100f || LeanTween.isTweening(menuOpciones))  {
+        if (canvasOpciones.GetComponent<GraphicRaycaster>().enabled == false && LeanTween.isTweening(menuOpciones) == false)  {
+            
             if (esperar == true) {
 
                 if (tiempoEspera > 0f) {
