@@ -1,0 +1,7 @@
+Enlace al repoitorio de GitHub con todos los archivos del juego, el archivo de juego original y con
+el que se podrá ejecutar el programa en Unity es el que se llama "MinijuegoBongos" (en caso de 
+querer importar el proyecto a Unity).
+También se halla una build del Juego que se puede ejecutar si se abre el archivo .exe del juego.
+
+
+Enlace: https://github.com/JoseMFT/Minijuego-Cesar-Minigames-1-Bongos
