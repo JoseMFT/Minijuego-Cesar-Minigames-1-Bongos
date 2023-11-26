@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class ButtonScaler : MonoBehaviour
 {
     public float escalaPropia;
+    GameObject gameManager, cameraPos, estadoPartida;
 
     void Start()
     {
-        
+        cameraPos = GameObject.Find("GameCameraPos");
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ScaleUp ()
@@ -25,7 +29,7 @@ public class ButtonScaler : MonoBehaviour
     public void ScaleDown ()
     {
         LeanTween.scale(gameObject, Vector3.one * .95f * escalaPropia, .15f).setEaseOutCubic().setOnComplete(() => {
-            ScaleUp();
+            ScaleBack();
         });
     }
 
@@ -33,5 +37,4 @@ public class ButtonScaler : MonoBehaviour
     {
         LeanTween.scale(gameObject, Vector3.one * escalaPropia, .15f).setEaseOutCubic();
     }
-
 }

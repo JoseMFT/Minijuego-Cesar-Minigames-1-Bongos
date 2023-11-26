@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     public string gemasTagUp, gemasTagDown;
     public GameObject[] poolUp, poolDown;
     GameObject gameManager, opcionesDesplegadas;
-    bool creado = false;
+    bool creado = false, creadaPrimera = false;
 
     void Awake ()
     {
@@ -83,6 +83,11 @@ public class Spawner : MonoBehaviour
                 gema.GetComponent<GemasBehavior>().Reset();
                 gema.GetComponent<GemasBehavior> ().gemaParalela = tieneParalela;
                 creado = true;
+                if (creadaPrimera == false)
+                {
+                    gema.GetComponent<GemasBehavior>().primeraGema = true;
+                    creadaPrimera = true;
+                }
             }
         }
     }

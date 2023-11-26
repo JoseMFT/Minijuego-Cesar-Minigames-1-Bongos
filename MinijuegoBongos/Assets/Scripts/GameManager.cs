@@ -16,10 +16,11 @@ public class GameManager : MonoBehaviour
     public AudioMixer mezclador;
     public Slider barraVolumenMaestro, barraVolumenMusica, barraVolumenFX;
     public TextMeshProUGUI textoVolumenMaestro, textoVolumenMusica, textoVolumenFX;
-    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara, victoria, derrota, canvasPropioFinal, opcionesDesplegadas;
+    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara, opcionesDesplegadas;
     GameObject [] objNuevos;
     public GameObject[] canciones;
-    bool generoFinal = false;
+    bool generoFinal = false; 
+    public bool derrotaOVictoria = false; // false es derrota, true es victoria; 
     
     // Start is called before the first frame update
     void Awake()
@@ -69,7 +70,8 @@ public class GameManager : MonoBehaviour
                         if (generoFinal == false)
                         {
                             generoFinal = true;
-                            FinalDelJuego(derrota);
+                            derrotaOVictoria = false;
+                            FinalDelJuego();
                         }
                     }
                 } else
@@ -77,7 +79,8 @@ public class GameManager : MonoBehaviour
                     if (generoFinal == false)
                     {
                         generoFinal = true;
-                        FinalDelJuego(victoria);
+                        derrotaOVictoria = true;
+                        FinalDelJuego();
                     }
                 }
             }
@@ -92,21 +95,18 @@ public class GameManager : MonoBehaviour
     public void DetectarSonido () {
         mezclador.ClearFloat("VolumenMaestro");
         mezclador.GetFloat("VolumenMaestro", out volumenJuegoMaestro);
-        UnityEngine.Debug.Log("Vol maestro: " + volumenJuegoMaestro.ToString());
         volumenJuegoMaestro = (volumenJuegoMaestro / 35f * 100f + 100);
         UnityEngine.Debug.Log("Vol maestro: " + volumenJuegoMaestro.ToString());
         barraVolumenMaestro.value = volumenJuegoMaestro;
 
         mezclador.ClearFloat("VolumenMusica");
         mezclador.GetFloat("VolumenMusica", out volumenJuegoMusica);
-        UnityEngine.Debug.Log("Vol musica: " + volumenJuegoMusica.ToString());
         volumenJuegoMusica = (volumenJuegoMusica / 35f * 100f + 100);
         UnityEngine.Debug.Log("Vol musica: " + volumenJuegoMusica.ToString());
         barraVolumenMusica.value = volumenJuegoMusica;
 
         mezclador.ClearFloat("VolumenFX");
         mezclador.GetFloat("VolumenFX", out volumenJuegoFX);
-        UnityEngine.Debug.Log("Vol FX: " + volumenJuegoFX.ToString());
         volumenJuegoFX = (volumenJuegoFX / 35f * 100f + 100);
         UnityEngine.Debug.Log("Vol FX: " + volumenJuegoFX.ToString());
         barraVolumenFX.value = volumenJuegoFX;
@@ -174,22 +174,24 @@ public class GameManager : MonoBehaviour
             }
     }
 
-    public void FinalDelJuego (GameObject resultadoFinal)
+    public void FinalDelJuego ()
     {
         if (SceneManager.GetActiveScene().name != "Final")
         {
             foreach (GameObject cancionSonando in canciones)
             {
-                Destroy(cancionSonando);
+                if (cancionSonando.activeSelf == true)
+                {
+                    Destroy(cancionSonando);
+
+                }
             }
 
             float x = 1f;
-            LeanTween.value(x, 0f, 1f).setOnComplete(()=>
+            LeanTween.value(x, 0f, 1.5f).setOnComplete(()=>
             {
                 SceneManager.LoadScene("Final");
                 canvasOpciones.SetActive(false);
-                canvasPropioFinal.SetActive(true);
-                resultadoFinal.SetActive(true);
             });
         }
     }

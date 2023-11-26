@@ -26,7 +26,7 @@ public class ButtonsBehavior: MonoBehaviour
         estadoSalir
     }
 
-    EstadosBoton estadoActual;
+    public EstadosBoton estadoActual;
 
     void Awake ()
     {
@@ -123,7 +123,7 @@ public class ButtonsBehavior: MonoBehaviour
                     UnityEngine.Debug.Log("Salir");
                     Application.Quit();
 
-                    EditorApplication.isPlaying = false;
+                    //EditorApplication.isPlaying = false;
                 }
                 break;
 

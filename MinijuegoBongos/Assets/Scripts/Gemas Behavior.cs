@@ -6,17 +6,17 @@ using TMPro;
 using System.Security.Cryptography;
 using System.Diagnostics;
 using System;
-// -1510 a -1720
+// -1490 a -1720
 public class GemasBehavior : MonoBehaviour
 {
     public GameObject puntosGameObject, imagenBlanca, menuOpciones, canvasOpciones, opcionesDesplegadas;
     public GameObject [] mensajesMarcar;
-    GameObject gameManager;
+    GameObject gameManager, cancionSonando;
     Slider sliderPuntos;
     CanvasGroup canvas, blancaCanvas;
     public KeyCode buttonCode;
     bool animando = false;
-    public bool cambioPuntos = false, puedeMarcar = true, gemaParalela = false;
+    public bool cambioPuntos = false, puedeMarcar = true, gemaParalela = false, primeraGema = false;
     float velocidad = 100f, sentidoY = 0f;
 
 
@@ -33,6 +33,7 @@ public class GemasBehavior : MonoBehaviour
     }
     void Start()
     {
+        cancionSonando = gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad];
     }
 
     // Update is called once per frame
@@ -66,12 +67,21 @@ public class GemasBehavior : MonoBehaviour
             if (animando == false && sliderPuntos.value >= 1f) {
                 AnimacionDesaparecer();
             }
-        }
 
-        if (transform.localPosition.x <= -1620 && gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].activeSelf == false)
-        {
-            gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].SetActive(true);
+            if (cancionSonando != null && primeraGema == true)
+            {
+                primeraGema = false;
+                float x = .1f;
+                LeanTween.value(x, 0f, .1f).setOnComplete(() =>
+                {
+                    UnityEngine.Debug.Log(gameObject.transform.localPosition.x.ToString());
+                    cancionSonando.SetActive(true);
+                    UnityEngine.Debug.Log("Puse una canción");
+
+                });
+            }
         }
+        //gameObject.transform.localPosition.x <= (-1520f - (1f * velocidad))  && 
     }
 
     
@@ -81,6 +91,7 @@ public class GemasBehavior : MonoBehaviour
             UnityEngine.Debug.Log ("+" + puntosAMarcar.ToString() + " puntos");
             cambioPuntos = true;
             sliderPuntos.value += puntosAMarcar;
+            MostrarMensajesAlMarcar();
             imagenBlanca.SetActive (true);
             imagenBlanca.GetComponent<Image> ().color = Color.white;
             imagenBlanca.SetActive (false);
@@ -133,18 +144,18 @@ public class GemasBehavior : MonoBehaviour
 
     public bool CheckerPuedeMarcar () {
 
-        if (transform.localPosition.x <= -1520f && transform.localPosition.x > -1720f) {
+        if (transform.localPosition.x <= -1490f && transform.localPosition.x > -1720f) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void MostrarMensajesAlMarcar (bool x)
+    public void MostrarMensajesAlMarcar ()
     {
-        bool puedeGenerar = x;
+        bool puedeGenerar = false;
 
-        while (puedeGenerar != false)
+        while (puedeGenerar == false)
         {
             int y = Mathf.FloorToInt(UnityEngine.Random.Range(0f, mensajesMarcar.Length - .01f));
             if (mensajesMarcar [y].activeSelf == false)

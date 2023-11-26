@@ -33,8 +33,8 @@ public class ScriptAnimMensajesInGame : MonoBehaviour
         gameObject.transform.localPosition = ogPos;
         gameObject.transform.localScale = ogScale;
         LeanTween.alphaCanvas(gameObject.GetComponent<CanvasGroup>(), 1f, .65f).setEaseOutQuad();
-        LeanTween.scale(gameObject, ogScale * 1.1f, 1f).setEaseOutCubic();
-        LeanTween.moveLocal(gameObject, new Vector3(ogPos.x, ogPos.y + .1f, ogPos.z), 1f).setEaseOutCubic().setOnComplete(()=> {
+        LeanTween.scale(gameObject, ogScale * 1.3f, 1f).setEaseOutCubic();
+        LeanTween.moveLocal(gameObject, new Vector3(ogPos.x, ogPos.y + 1f, ogPos.z), 1f).setEaseOutCubic().setOnComplete(()=> {
             gameObject.SetActive(false);
         });
     }
