@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara, victoria, derrota, canvasPropioFinal, opcionesDesplegadas;
     GameObject [] objNuevos;
     public GameObject[] canciones;
+    bool generoFinal = false;
     
     // Start is called before the first frame update
     void Awake()
@@ -65,11 +66,19 @@ public class GameManager : MonoBehaviour
                 {
                     if (canciones [dificultad].GetComponent<AudioSource>().isPlaying == false && canciones [dificultad].activeSelf == true && (opcionesDesplegadas.activeSelf == false))
                     {
-                        FinalDelJuego(derrota);
+                        if (generoFinal == false)
+                        {
+                            generoFinal = true;
+                            FinalDelJuego(derrota);
+                        }
                     }
                 } else
                 {
-                    FinalDelJuego(victoria);
+                    if (generoFinal == false)
+                    {
+                        generoFinal = true;
+                        FinalDelJuego(victoria);
+                    }
                 }
             }
         }

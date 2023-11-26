@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System.Security.Cryptography;
 using System.Diagnostics;
-// -1570 a -1720
+using System;
+// -1510 a -1720
 public class GemasBehavior : MonoBehaviour
 {
     public GameObject puntosGameObject, imagenBlanca, menuOpciones, canvasOpciones, opcionesDesplegadas;
+    public GameObject [] mensajesMarcar;
     GameObject gameManager;
     Slider sliderPuntos;
     CanvasGroup canvas, blancaCanvas;
@@ -66,7 +68,7 @@ public class GemasBehavior : MonoBehaviour
             }
         }
 
-        if (transform.localPosition.x <= -1600 && gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].activeSelf == false)
+        if (transform.localPosition.x <= -1620 && gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].activeSelf == false)
         {
             gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].SetActive(true);
         }
@@ -76,7 +78,7 @@ public class GemasBehavior : MonoBehaviour
     public void MarcarPuntos(float puntosAMarcar) {
 
         if (Input.GetKeyDown (buttonCode) && CheckerPuedeMarcar () == puedeMarcar && sliderPuntos.value < 1f) {
-            UnityEngine.Debug.Log ("a");
+            UnityEngine.Debug.Log ("+" + puntosAMarcar.ToString() + " puntos");
             cambioPuntos = true;
             sliderPuntos.value += puntosAMarcar;
             imagenBlanca.SetActive (true);
@@ -131,10 +133,26 @@ public class GemasBehavior : MonoBehaviour
 
     public bool CheckerPuedeMarcar () {
 
-        if (transform.localPosition.x <= -1560f && transform.localPosition.x > -1720f) {
+        if (transform.localPosition.x <= -1520f && transform.localPosition.x > -1720f) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void MostrarMensajesAlMarcar (bool x)
+    {
+        bool puedeGenerar = x;
+
+        while (puedeGenerar != false)
+        {
+            int y = Mathf.FloorToInt(UnityEngine.Random.Range(0f, mensajesMarcar.Length - .01f));
+            if (mensajesMarcar [y].activeSelf == false)
+            {
+                puedeGenerar = true;
+                mensajesMarcar [y].SetActive(true);
+                mensajesMarcar [y].GetComponent<ScriptAnimMensajesInGame>().activarAnim = true;                
+            }
         }
     }
 }
