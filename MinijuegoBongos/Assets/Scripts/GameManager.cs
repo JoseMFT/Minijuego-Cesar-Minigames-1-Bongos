@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public AudioMixer mezclador;
     public Slider barraVolumenMaestro, barraVolumenMusica, barraVolumenFX;
     public TextMeshProUGUI textoVolumenMaestro, textoVolumenMusica, textoVolumenFX;
-    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara, victoria, derrota, canvasPropioFinal;
+    public GameObject menuOpciones, canvasOpciones, botonMenuOpciones, botonSalirOpciones, posicionDeCamara, camara, victoria, derrota, canvasPropioFinal, opcionesDesplegadas;
     GameObject [] objNuevos;
     public GameObject[] canciones;
     
@@ -63,19 +63,13 @@ public class GameManager : MonoBehaviour
             {
                 if (sliderPuntos.value < 1f)
                 {
-                    if (canciones [dificultad].GetComponent<AudioSource>().isPlaying == false && canciones [dificultad].activeSelf == true)
+                    if (canciones [dificultad].GetComponent<AudioSource>().isPlaying == false && canciones [dificultad].activeSelf == true && (opcionesDesplegadas.activeSelf == false))
                     {
-                        canciones [dificultad].SetActive(false);
-                        SceneManager.LoadScene("Final");
-                        canvasPropioFinal.SetActive(true);
-                        derrota.SetActive(true);
+                        FinalDelJuego(derrota);
                     }
                 } else
                 {
-                    canciones [dificultad].SetActive(false);
-                    SceneManager.LoadScene("Final");
-                    canvasPropioFinal.SetActive(true);
-                    victoria.SetActive(true);
+                    FinalDelJuego(victoria);
                 }
             }
         }
@@ -154,7 +148,6 @@ public class GameManager : MonoBehaviour
         menuOpciones.transform.localPosition = new Vector3(0f, 1100f, 0f);
         SceneManager.LoadScene("Menu");
         mezclador.SetFloat("VelocidadMusica", 1f);
-        canciones [dificultad].SetActive(false);
         Destroy(posicionDeCamara);
         Destroy(canvasOpciones);
     }
@@ -170,5 +163,25 @@ public class GameManager : MonoBehaviour
                     Destroy(objOriginales);
                 }
             }
+    }
+
+    public void FinalDelJuego (GameObject resultadoFinal)
+    {
+        if (SceneManager.GetActiveScene().name != "Final")
+        {
+            foreach (GameObject cancionSonando in canciones)
+            {
+                Destroy(cancionSonando);
+            }
+
+            float x = 1f;
+            LeanTween.value(x, 0f, 1f).setOnComplete(()=>
+            {
+                SceneManager.LoadScene("Final");
+                canvasOpciones.SetActive(false);
+                canvasPropioFinal.SetActive(true);
+                resultadoFinal.SetActive(true);
+            });
+        }
     }
 }

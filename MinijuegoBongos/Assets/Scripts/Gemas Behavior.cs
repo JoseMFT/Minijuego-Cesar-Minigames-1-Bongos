@@ -8,7 +8,7 @@ using System.Diagnostics;
 // -1570 a -1720
 public class GemasBehavior : MonoBehaviour
 {
-    public GameObject puntosGameObject, imagenBlanca, menuOpciones, canvasOpciones;
+    public GameObject puntosGameObject, imagenBlanca, menuOpciones, canvasOpciones, opcionesDesplegadas;
     GameObject gameManager;
     Slider sliderPuntos;
     CanvasGroup canvas, blancaCanvas;
@@ -21,6 +21,7 @@ public class GemasBehavior : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager");
+        opcionesDesplegadas = gameManager.GetComponent<GameManager>().opcionesDesplegadas;
         imagenBlanca.SetActive (false);
         velocidad = velocidad * (gameManager.GetComponent<GameManager>().velocidadJuego * 2);
         sliderPuntos = puntosGameObject.GetComponent<Slider> ();
@@ -35,12 +36,12 @@ public class GemasBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvasOpciones.GetComponent<GraphicRaycaster>().enabled == false && LeanTween.isTweening(menuOpciones) == false)
+        if (opcionesDesplegadas.activeSelf == false)
         {
             transform.eulerAngles = transform.eulerAngles + new Vector3 (0f, 0f, 1f) * velocidad * Time.deltaTime;
             transform.position = transform.position - new Vector3 (velocidad * 5f, -velocidad * (0f - sentidoY) , 0f) * Time.deltaTime;
 
-            if (transform.localPosition.x < -1710) {
+            if (transform.localPosition.x < -1720) {
                 if (animando == false) {
                     sentidoY = .5f; 
                     imagenBlanca.SetActive (true);
@@ -65,7 +66,7 @@ public class GemasBehavior : MonoBehaviour
             }
         }
 
-        if (transform.localPosition.x <= -1570 && gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].activeSelf == false)
+        if (transform.localPosition.x <= -1600 && gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].activeSelf == false)
         {
             gameManager.GetComponent<GameManager>().canciones [gameManager.GetComponent<GameManager>().dificultad].SetActive(true);
         }
@@ -130,7 +131,7 @@ public class GemasBehavior : MonoBehaviour
 
     public bool CheckerPuedeMarcar () {
 
-        if (transform.localPosition.x <= -1570f && transform.localPosition.x > -1710f) {
+        if (transform.localPosition.x <= -1560f && transform.localPosition.x > -1720f) {
             return true;
         } else {
             return false;

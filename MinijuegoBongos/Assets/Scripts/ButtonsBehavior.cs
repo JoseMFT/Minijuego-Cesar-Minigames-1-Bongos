@@ -9,13 +9,13 @@ using System.Collections.Specialized;
 
 public class ButtonsBehavior: MonoBehaviour
 {
-    public GameObject sliderDificultadGameObject, bandejaOpciones, ultimoBoton;
+    public GameObject sliderDificultadGameObject, bandejaOpciones, ultimoBoton, opcionesDesplegadas;
     public KeyCode botonStart;
     Slider sliderDificultad;
     float nuevoValorSlider = 0f;
     public GameObject [] botonesMenu;
     public GameObject [] botonesDificultad;
-    public GameObject [] botonesOpciones;
+    public GameObject [] canciones;
     public Canvas mainCanvas, canvasOpciones;
 
     public enum EstadosBoton
@@ -168,6 +168,14 @@ public class ButtonsBehavior: MonoBehaviour
 
         if (bandejaOpciones.transform.localPosition.y == 1100f)
         {
+            opcionesDesplegadas.SetActive(true);
+            foreach (GameObject cancion in canciones)
+            {
+                if (cancion.GetComponent<AudioSource>().isPlaying == true)
+                {
+                    cancion.GetComponent<AudioSource>().Pause();
+                }
+            }
             LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 0f);
             LeanTween.moveLocal(bandejaOpciones, Vector3.zero, 1.5f).setEaseOutBounce().setOnComplete(() =>
             {
@@ -178,6 +186,14 @@ public class ButtonsBehavior: MonoBehaviour
         {
             LeanTween.moveLocal(bandejaOpciones, new Vector3(0f, 1100f, 0f), 1f).setEaseOutCubic().setOnComplete(() =>
             {
+                foreach (GameObject cancion in canciones)
+                {
+                    if (cancion.GetComponent<AudioSource>().isPlaying == false && cancion.activeSelf == true)
+                    {
+                        cancion.GetComponent<AudioSource>().UnPause();
+                    }
+                }
+                opcionesDesplegadas.SetActive(false);
                 CheckearCanvasMenu(true);
             });
         }

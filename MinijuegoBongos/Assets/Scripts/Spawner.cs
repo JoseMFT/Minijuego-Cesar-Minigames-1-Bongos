@@ -10,12 +10,13 @@ public class Spawner : MonoBehaviour
     public float tempo = 1f, defaultTempo = 1f;
     public string gemasTagUp, gemasTagDown;
     public GameObject[] poolUp, poolDown;
-    GameObject gameManager;
+    GameObject gameManager, opcionesDesplegadas;
     bool creado = false;
 
     void Awake ()
     {
         gameManager = GameObject.Find("GameManager");
+        opcionesDesplegadas = gameManager.GetComponent<GameManager>().opcionesDesplegadas;
         defaultTempo = 1f / (gameManager.GetComponent<GameManager>().velocidadJuego * 2);
         tempo = defaultTempo;
     }
@@ -36,31 +37,34 @@ public class Spawner : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (puntos.value < 1f) {
-            if (tempo >= 0) {
-                tempo -= Time.deltaTime;
-            } else {
-                int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.99f)));
-                if (row == 1 || row == 2)
-                {
-                    Creator(poolUp, false);
-                }
-                else if (row == 3 || row == 4)
-                {
-                    Creator(poolDown, false);
+        if (opcionesDesplegadas.activeSelf == false)
+        {
+            if (puntos.value < 1f) {
+                if (tempo >= 0) {
+                    tempo -= Time.deltaTime;
+                } else {
+                    int row = (Mathf.FloorToInt(Random.Range(1.01f, 5.99f)));
+                    if (row == 1 || row == 2)
+                    {
+                        Creator(poolUp, false);
+                    }
+                    else if (row == 3 || row == 4)
+                    {
+                        Creator(poolDown, false);
 
-                } else if (row >= 5)
-                {
-                    Creator(poolUp, true);
+                    } else if (row >= 5)
+                    {
+                        Creator(poolUp, true);
+                        creado = false;
+                        Creator(poolDown, true);
+                    }
+
+                    ResetTimer();
                     creado = false;
-                    Creator(poolDown, true);
                 }
-
-                ResetTimer();
-                creado = false;
+            } else {
+                gameObject.GetComponent<Spawner> ().enabled = false;
             }
-        } else {
-            gameObject.GetComponent<Spawner> ().enabled = false;
         }
     }
 
