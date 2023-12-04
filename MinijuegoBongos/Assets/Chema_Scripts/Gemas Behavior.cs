@@ -9,12 +9,12 @@ using System;
 // -1490 a -1720
 public class GemasBehavior : MonoBehaviour
 {
-    public GameObject puntosGameObject, imagenBlanca, menuOpciones, canvasOpciones, opcionesDesplegadas;
+    public GameObject puntosGameObject, imagenBlanca, menuOpciones, canvasOpciones, opcionesDesplegadas, camara;
     public GameObject [] mensajesMarcar;
     GameObject gameManager, cancionSonando;
     Slider sliderPuntos;
     CanvasGroup canvas, blancaCanvas;
-    public KeyCode buttonCode;
+    public KeyCode buttonCode1, buttonCode2;
     bool animando = false;
     public bool cambioPuntos = false, puedeMarcar = true, gemaParalela = false, primeraGema = false;
     float velocidad = 100f, sentidoY = 0f;
@@ -87,7 +87,7 @@ public class GemasBehavior : MonoBehaviour
     
     public void MarcarPuntos(float puntosAMarcar) {
 
-        if (Input.GetKeyDown (buttonCode) && CheckerPuedeMarcar () == puedeMarcar && sliderPuntos.value < 1f) {
+        if ((Input.GetKeyDown (buttonCode1) || Input.GetKeyDown (buttonCode2)) && sliderPuntos.value < 1f ) {
             UnityEngine.Debug.Log ("+" + puntosAMarcar.ToString() + " puntos");
             cambioPuntos = true;
             sliderPuntos.value += puntosAMarcar;
@@ -144,7 +144,7 @@ public class GemasBehavior : MonoBehaviour
 
     public bool CheckerPuedeMarcar () {
 
-        if (transform.localPosition.x <= -1490f && transform.localPosition.x > -1720f) {
+        if (transform.localPosition.x <= -1490f && transform.localPosition.x > -1720f && camara.GetComponent<ControladorTiempoInput>().puedeTocarBongos == true) {
             return true;
         } else {
             return false;

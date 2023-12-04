@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.15854973, g: 0.17051059, b: 0.17597294, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -850,8 +850,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -1501,8 +1513,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -1948,8 +1972,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -3565,8 +3601,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -3775,8 +3823,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -5164,8 +5224,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -5831,8 +5903,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -6325,12 +6409,10 @@ MonoBehaviour:
   sonidoBongoL: {fileID: 780436196}
   sonidoBongoR: {fileID: 780436197}
   esteSonido: {fileID: 0}
-  BongoL: 323
-  BongoR: 324
-  otraTecla: 0
   tiempoEspera: 0.05
   ShockWaveL: {fileID: 1901431647}
   shockWaveR: {fileID: 1829042481}
+  camara: {fileID: 963194225}
 --- !u!4 &780436200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6084987029536721496, guid: 504d764424368374c84ddab7460fe1bd, type: 3}
@@ -6540,8 +6622,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -7673,6 +7767,8 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194233}
   - component: {fileID: 963194232}
+  - component: {fileID: 963194234}
+  - component: {fileID: 963194235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7858,6 +7954,49 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f58ab9f3e82b864889aac72ed987512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puedeTocarBongos: 1
+--- !u!114 &963194235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: 0}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 963194227}
 --- !u!4 &991039367
 Transform:
   m_ObjectHideFlags: 0
@@ -10499,8 +10638,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -10835,8 +10986,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -11252,8 +11415,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -11991,8 +12166,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -12407,8 +12594,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -12621,8 +12820,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -12861,8 +13072,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -13263,8 +13486,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -14035,8 +14270,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -14245,8 +14492,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
@@ -16004,8 +16263,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2079038630}
     m_Modifications:
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: tagOpuesto
       value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode1
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
+      propertyPath: buttonCode2
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: -2136165051143837993, guid: bf546cb52ecee7244876279094f28c64, type: 3}
       propertyPath: sliderPuntos
@@ -16194,8 +16465,20 @@ PrefabInstance:
       value: Gema Azul
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: tagOpuesto
       value: Violeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode1
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
+      propertyPath: buttonCode2
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 2330573590257377542, guid: f8c7d9b9e2bf5f6469664475396031b7, type: 3}
       propertyPath: sliderPuntos
