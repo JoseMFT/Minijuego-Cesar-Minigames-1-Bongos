@@ -8,7 +8,7 @@ using TMPro;
 using System.Collections.Specialized;
 using System.Diagnostics;
 
-public class ChemaGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public float velocidadJuego = 1, volumenJuegoMaestro, volumenJuegoMusica, volumenJuegoFX;
     public int creadosPorEscena = 0, dificultad = 0;
